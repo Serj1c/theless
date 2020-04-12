@@ -1,0 +1,7 @@
+version: "3.7"
+
+services:
+  nginx:
+    volumes:
+      - ./nginx/conf.d.prod:/etc/nginx/conf.d
+      - /etc/letsencrypt:/etc/letsencrypt

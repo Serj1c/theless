@@ -1,0 +1,10 @@
+version: "3.7"
+
+services:
+  nginx:
+    volumes:
+      - ./nginx/conf.d.dev:/etc/nginx/conf.d
+      - ./certs:/usr/certs
+  db:
+    ports:
+      - 27017:27017
