@@ -8,3 +8,6 @@ services:
   db:
     ports:
       - 27017:27017
+  api:
+    volumes:
+      - ./api:/go/src/app

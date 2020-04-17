@@ -37,6 +37,8 @@ services:
        - db
      networks:
        - backend
+     environment:
+       - ENV=${ENV}
      restart: always
 
 networks:

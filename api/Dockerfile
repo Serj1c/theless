@@ -1,13 +1,25 @@
-FROM golang:1.14.1-alpine3.11 as build
+FROM golang:1.14-alpine
 
 LABEL maintainer="varkadov@theless.ru"
 
+# Install modules
 WORKDIR /go/src/app
-COPY . .
+
+COPY go.mod go.sum ./
 
 RUN go get -d -v ./...
 RUN go install -v ./...
 
-RUN go build -o main .
+# Build stage
+COPY . .
 
-CMD ["./main"]
+CMD if [ "$ENV" = "development" ]; then \
+        cd $(mktemp -d); \
+        go mod init tmp; \
+        go get -v github.com/cespare/reflex; \
+        cd -; \
+        reflex -r '(\.go$|go\.mod)' -s go run .; \
+    else \
+        go build -o main .; \
+        ./main; \
+    fi
