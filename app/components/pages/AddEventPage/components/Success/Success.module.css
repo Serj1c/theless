@@ -1,0 +1,8 @@
+.root {
+    max-width: 320px;
+}
+
+.icon {
+    display: block;
+    margin: auto;
+}

@@ -1,0 +1,31 @@
+.root {
+    border: 1px solid #E0E0E0;
+    border-radius: 4px;
+    padding: 0 12px;
+    width: 100%;
+    outline: none;
+    appearance: none;
+    resize: vertical;
+}
+
+/* Size modifier */
+.root_size_l {
+    padding-top: 13px;
+    padding-bottom: 13px;
+    line-height: 22px;
+    font-size: 18px;
+}
+
+.root_size_m {
+    padding-top: 9px;
+    padding-bottom: 9px;
+    line-height: 18px;
+    font-size: 14px;
+}
+
+.root_size_s {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    line-height: 16px;
+    font-size: 12px;
+}

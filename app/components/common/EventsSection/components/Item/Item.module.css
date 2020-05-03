@@ -1,0 +1,8 @@
+.cover {
+    padding-bottom: 55%;
+    border-radius: 5px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #CCCCCC;
+}

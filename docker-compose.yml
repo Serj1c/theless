@@ -9,37 +9,38 @@ services:
       - "443:443"
     volumes:
       - ./logs/nginx:/var/log/nginx
-      - ./web/public:/usr/share/nginx/html
     networks:
       - backend
+    depends_on:
+      - api
+      - app
     restart: always
 
-  # web
-  #   build: './web
-  #   ports:
-  #     - "8080"
-  #   restart: always
+  app:
+    build:
+      context: './app'
+    environment:
+      - ENV=${ENV}
+    networks:
+      - backend
 
-  # https://hub.docker.com/_/mongo
   db:
     image: mongo:4.0
-    # TODO Open 27017 but close with iptables
-    # ports:
-    #   - 27017:27017
     volumes:
      - db-data:/data/db
     networks:
       - backend
 
   api:
-     build: './api'
-     depends_on:
-       - db
-     networks:
-       - backend
-     environment:
-       - ENV=${ENV}
-     restart: always
+    build:
+      context: './api'
+    depends_on:
+      - db
+    networks:
+      - backend
+    environment:
+      - ENV=${ENV}
+    restart: always
 
 networks:
   backend:

@@ -27,7 +27,7 @@ func (e *EventService) GetV1(r *http.Request, params *GetV1Params, reply *GetV1R
 
 	fields := bson.M{
 		"address": 1, "cover": 1, "date": 1, "name": 1, "slug": 1, "location": 1, "description": 1,
-		"coordinates": 1,
+		"coordinates": 1, "link": 1,
 	}
 
 	// Getting event item

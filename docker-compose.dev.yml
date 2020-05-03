@@ -11,3 +11,6 @@ services:
   api:
     volumes:
       - ./api:/go/src/app
+  app:
+    volumes:
+      - ./app:/home/node/app

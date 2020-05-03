@@ -1,0 +1,12 @@
+.root {
+    flex-grow: 1;
+    max-width: 100%;
+}
+
+@media (min-width: 1200px) {
+    .root {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+

@@ -1,0 +1,50 @@
+.root {
+    margin: 0;
+    font-weight: inherit;
+}
+
+/* Size modifiers */
+.root_size_xxl {
+    font-size: 28px;
+}
+
+.root_size_xl {
+    font-size: 24px;
+}
+
+.root_size_l {
+    font-size: 16px;
+}
+
+.root_size_m {
+    font-size: 14px;
+}
+
+.root_size_s {
+    font-size: 12px;
+}
+
+.root_size_xs {
+    font-size: 10px;
+}
+
+/* Color modifiers */
+.root_color_default {
+    color: #000;
+}
+
+.root_color_noaccent {
+    color: #808080;
+}
+
+.root_color_inverted {
+    color: #fff;
+}
+
+.root_color_danger {
+    color: #ff6163;
+}
+
+.root_color_inherit {
+    color: inherit;
+}
