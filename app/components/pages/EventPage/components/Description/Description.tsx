@@ -1,6 +1,6 @@
 import React from 'react';
-import moment from 'moment';
 import { Col, Link, Paragraph, Row } from 'components/ui';
+import { formatDate } from 'utils/formatDate';
 import { EventModel } from 'models';
 
 interface Props {
@@ -11,7 +11,7 @@ const Description = ({ item }: Props): JSX.Element => (
     <Row>
         <Col cols={12} colsLG={8}>
             <Paragraph marginTop='none' size='l' color='noaccent'>
-                {moment(item.date).locale('ru').format('D MMMM, dddd')}
+                {formatDate(item.dateStart, item.dateEnd)}
             </Paragraph>
 
             <Paragraph size='l' color='noaccent'>
@@ -25,9 +25,11 @@ const Description = ({ item }: Props): JSX.Element => (
                 </Paragraph>
             )}
 
-            <Paragraph marginTop='l' size='l'>
-                {item.description}
-            </Paragraph>
+            {item.description && (
+                <Paragraph marginTop='l' size='l'>
+                    {item.description}
+                </Paragraph>
+            )}
         </Col>
     </Row>
 );

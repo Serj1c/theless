@@ -6,7 +6,8 @@ export interface EventModel {
    location: LocationModel;
    link?: string;
    name: string;
-   date: number;
+   dateStart: number;
+   dateEnd: number;
    address: string;
    cover: string;
    description?: string;

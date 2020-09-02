@@ -9,7 +9,7 @@ export default (list: EventModel[], inclusive = false) => {
     const endOfMonth = moment().endOf('month');
 
     list.forEach((e) => {
-        const date = moment(e.date);
+        const date = moment(e.dateStart);
 
         if (date.isBefore(endOfWeek)) {
             week.push(e);

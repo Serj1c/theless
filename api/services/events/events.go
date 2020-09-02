@@ -13,7 +13,8 @@ type EventItem struct {
 	Address     string        `json:"address" bson:"address"`
 	Description string        `json:"description,omitempty" bson:"description"`
 	Coords      []float32     `json:"coordinates,omitempty" bson:"coordinates"`
-	Date        time.Time     `json:"date" bson:"date"`
+	DateStart   time.Time     `json:"dateStart" bson:"dateStart"`
+	DateEnd     time.Time     `json:"dateEnd" bson:"dateEnd"`
 	Cover       string        `json:"cover" bson:"cover"`
 	Link        string        `json:"link" bson:"link"`
 }

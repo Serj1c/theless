@@ -13,7 +13,11 @@ type GetListV1Params struct {
 	Limit int       `json:"limit"`
 }
 
-func (e *EventService) GetListV1(r *http.Request, params *GetListV1Params, reply *[]EventItem) error {
+func (e *EventService) GetListV1(
+	_ *http.Request,
+	params *GetListV1Params,
+	reply *[]EventItem,
+) error {
 	dateQuery := bson.M{}
 
 	if params.From.IsZero() {
@@ -26,8 +30,16 @@ func (e *EventService) GetListV1(r *http.Request, params *GetListV1Params, reply
 		dateQuery["$lte"] = params.Till
 	}
 
-	query := bson.M{"date": dateQuery}
-	fields := bson.M{"address": 1, "cover": 1, "date": 1, "name": 1, "slug": 1, "location": 1}
+	query := bson.M{"dateEnd": dateQuery}
+	fields := bson.M{
+		"address":   1,
+		"cover":     1,
+		"dateStart": 1,
+		"dateEnd":   1,
+		"name":      1,
+		"slug":      1,
+		"location":  1,
+	}
 
-	return config.EventsCollection.Find(query).Select(fields).Limit(params.Limit).Sort("date").All(reply)
+	return config.EventsCollection.Find(query).Select(fields).Limit(params.Limit).Sort("dateStart").All(reply)
 }

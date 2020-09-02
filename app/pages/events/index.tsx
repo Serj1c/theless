@@ -30,14 +30,14 @@ const EventPageComponent: NextPage<Props> = ({ list, error }): JSX.Element => {
 }
 
 export const getServerSideProps: GetServerSideProps<Props> = async () => {
-    let list: EventModel[] | undefined;
+    let list: EventModel[];
 
     try {
         list = await jsonrpc.request<EventModel[]>('Events.GetListV1');
 
         return {
             props: {
-                list
+                list: list || [],
             }
         };
     } catch(error) {

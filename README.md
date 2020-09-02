@@ -4,12 +4,12 @@
 
 ### Setup
 
-1. Add `127.0.0.0 theless.dev` into the `/etc/hosts`;
-2. Add local certificates in browser.
+1. Add `127.0.0.1 theless.dev` into the `/etc/hosts`;
+2. Add local certificates in a browser.
 
-### Start
+### Start dev environment
 
-1. Run `docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d`.
+1. Run `ENV=development docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d`.
 
 ## Prod environment
 
