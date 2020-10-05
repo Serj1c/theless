@@ -11,6 +11,10 @@
 
 1. Run `docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d`.
 
+### Add local certificates
+
+TODO
+
 ## Prod environment
 
 ### Deploy
