@@ -14,11 +14,8 @@
 ### Add local certificates
 
 1. Open Chrome Settings >>> Security >>> Manage certificates
-2. Drag and drop certificates there
-
-or
-
-Just double click them
+2. Drag and drop certificates (taken from /theless/certs) there
+3. Double click on each of them >>> Trust >>> "Always Trust"
 
 ## Prod environment
 
