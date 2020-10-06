@@ -13,7 +13,10 @@
 
 ### Add local certificates
 
-TODO
+1. Open Chrome Settings >>> Security >>> Manage certificates
+2. Drag and drop certificates there
+or
+1. Just double click them
 
 ## Prod environment
 
