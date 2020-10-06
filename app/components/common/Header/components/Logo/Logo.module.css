@@ -1,13 +1,13 @@
 .link {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .logo {
-    fill: #000;
-    width: 100px;
-    height: 40px;
+  fill: #000;
+  width: 100px;
+  height: 40px;
 }
 
 .logo_inverted {
-    fill: #FFF;
+  fill: #fff;
 }

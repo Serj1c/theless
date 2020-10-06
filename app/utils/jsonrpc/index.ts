@@ -5,9 +5,4 @@ import { jsonRpcClient } from './jsonRpcClient';
 
 export default jsonRpcClient;
 
-export {
-    HTTPError,
-    Jsonrpc,
-    JsonrpcError,
-    jsonRpcClient,
-}
+export { HTTPError, Jsonrpc, JsonrpcError, jsonRpcClient };

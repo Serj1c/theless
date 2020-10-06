@@ -1,55 +1,55 @@
 .root {
-    border: 1px solid #E0E0E0;
-    border-radius: 4px;
-    padding: 0 12px;
-    width: 100%;
-    outline: none;
-    appearance: none;
-    box-sizing: border-box;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 0 12px;
+  width: 100%;
+  outline: none;
+  appearance: none;
+  box-sizing: border-box;
 }
 
 /* Size modifier */
 .root_size_l {
-    height: 48px;
-    line-height: 48px;
-    font-size: 18px;
+  height: 48px;
+  line-height: 48px;
+  font-size: 18px;
 }
 
 .root_size_m {
-    height: 38px;
-    line-height: 38px;
-    font-size: 14px;
+  height: 38px;
+  line-height: 38px;
+  font-size: 14px;
 }
 
 .root_size_s {
-    height: 28px;
-    line-height: 28px;
-    font-size: 12px;
+  height: 28px;
+  line-height: 28px;
+  font-size: 12px;
 }
 
 /* Rounded modifier */
 /* With different size */
 .root_rounded.root_size_s {
-    border-radius: 14px;
+  border-radius: 14px;
 }
 
 .root_rounded.root_size_m {
-    border-radius: 18px;
+  border-radius: 18px;
 }
 
 .root_rounded.root_size_l {
-    border-radius: 24px;
+  border-radius: 24px;
 }
 
 /* Text align modifiers */
 .root_text-align_left {
-    text-align: left;
+  text-align: left;
 }
 
 .root_text-align_center {
-    text-align: center;
+  text-align: center;
 }
 
 .root_text-align_right {
-    text-align: right;
+  text-align: right;
 }

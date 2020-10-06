@@ -5,24 +5,24 @@ import styles from './Textarea.module.css';
 type Size = 's' | 'm' | 'l';
 
 interface Props extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
-    size?: Size;
+  size?: Size;
 }
 
 const Textarea = ({ size, autoFocus, ...restProps }: Props): JSX.Element => {
-    const ref = useRef<HTMLTextAreaElement>(null);
-    const className = classNames(styles.root, styles[`root_size_${size}`]);
+  const ref = useRef<HTMLTextAreaElement>(null);
+  const className = classNames(styles.root, styles[`root_size_${size}`]);
 
-    useEffect(() => {
-        if (ref.current && autoFocus) {
-            ref.current.focus();
-        }
-    }, [autoFocus]);
+  useEffect(() => {
+    if (ref.current && autoFocus) {
+      ref.current.focus();
+    }
+  }, [autoFocus]);
 
-    return <textarea ref={ref} {...restProps} className={className} />;
+  return <textarea ref={ref} {...restProps} className={className} />;
 };
 
 Textarea.defaultProps = {
-    size: 'm'
+  size: 'm',
 };
 
 export default memo(Textarea);

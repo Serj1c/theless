@@ -1,12 +1,12 @@
 export default class HTTPError extends Error {
-    status: number;
+  status: number;
 
-    statusText: string;
+  statusText: string;
 
-    constructor({ status, statusText }: Response) {
-        super();
-        this.name = this.constructor.name;
-        this.status = status;
-        this.statusText = statusText;
-    }
+  constructor({ status, statusText }: Response) {
+    super();
+    this.name = this.constructor.name;
+    this.status = status;
+    this.statusText = statusText;
+  }
 }

@@ -9,13 +9,13 @@ import PageHeader from './PageHeader/PageHeader';
 import Map from './Map/Map';
 
 export {
-    Footer,
-    Header,
-    Headline,
-    NoEvents,
-    Overview,
-    Page,
-    SubscriptionForm,
-    PageHeader,
-    Map,
+  Footer,
+  Header,
+  Headline,
+  NoEvents,
+  Overview,
+  Page,
+  SubscriptionForm,
+  PageHeader,
+  Map,
 };

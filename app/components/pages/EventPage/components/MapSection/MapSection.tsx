@@ -3,15 +3,15 @@ import { FullWidthCol, Row } from 'components/ui';
 import { Map } from 'components/common';
 
 interface Props {
-    coordinates: [number, number];
+  coordinates: [number, number];
 }
 
 const MapSection = ({ coordinates }: Props): JSX.Element => (
-    <Row margin='xl'>
-        <FullWidthCol>
-            <Map coords={coordinates} />
-        </FullWidthCol>
-    </Row>
+  <Row margin='xl'>
+    <FullWidthCol>
+      <Map coords={coordinates} />
+    </FullWidthCol>
+  </Row>
 );
 
 export default MapSection;

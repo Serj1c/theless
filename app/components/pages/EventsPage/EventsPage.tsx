@@ -1,37 +1,37 @@
 import React from 'react';
 import {
-    Footer, Header, NoEvents, Overview, Page, PageHeader, SubscriptionForm
+  Footer,
+  Header,
+  NoEvents,
+  Overview,
+  Page,
+  PageHeader,
+  SubscriptionForm,
 } from 'components/common';
 import { EventModel } from 'models/EventModel';
 
 interface Props {
-    title: string;
-    list?: EventModel[];
+  title: string;
+  list?: EventModel[];
 }
 
 const EventsPage = ({ list, title }: Props): JSX.Element => (
-    <Page
-        topOffset
-        header={<Header />}
-        footer={<Footer />}>
-        {/* Page header */}
-        <PageHeader
-            title={title} />
+  <Page topOffset header={<Header />} footer={<Footer />}>
+    {/* Page header */}
+    <PageHeader title={title} />
 
-        {list.length === 0 ? (
-            <NoEvents />
-        ) : (
-            <>
-                {/* List of events */}
-                <Overview
-                    list={list} />
+    {list.length === 0 ? (
+      <NoEvents />
+    ) : (
+      <>
+        {/* List of events */}
+        <Overview list={list} />
 
-                {/*Subscription form */}
-                <SubscriptionForm
-                    title='Подписаться на&nbsp;новые события' />
-            </>
-        )}
-    </Page>
+        {/*Subscription form */}
+        <SubscriptionForm title='Подписаться на&nbsp;новые события' />
+      </>
+    )}
+  </Page>
 );
 
 export default EventsPage;

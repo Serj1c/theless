@@ -4,18 +4,18 @@ import Router from 'next/router';
 import { HOMEPAGE_URL } from 'constants/common';
 
 const HomePage: NextPage = (): null => {
-    useEffect(() => {
-        Router.replace(HOMEPAGE_URL);
-    }, []);
+  useEffect(() => {
+    Router.replace(HOMEPAGE_URL);
+  }, []);
 
-    return null;
-}
+  return null;
+};
 
 export const getServerSideProps: GetServerSideProps<{}> = async ({ res }) => {
-    res.writeHead(301, { Location: HOMEPAGE_URL });
-    res.end();
+  res.writeHead(301, { Location: HOMEPAGE_URL });
+  res.end();
 
-    return { props: {} };
+  return { props: {} };
 };
 
 export default HomePage;

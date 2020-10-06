@@ -1,35 +1,35 @@
 .root {
-    height: 100vh; /* Fallback for browsers that do not support Custom Properties */
-    height: calc(var(--vh, 1vh) * 100);
-    display: flex;
-    flex-direction: column;
+  height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+  height: calc(var(--vh, 1vh) * 100);
+  display: flex;
+  flex-direction: column;
 }
 
 .root_offset_top {
-    padding-top: 70px;
+  padding-top: 70px;
 }
 
 .header,
 .footer {
-    flex-grow: 0;
-    flex-shrink: 1;
+  flex-grow: 0;
+  flex-shrink: 1;
 }
 
 .header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
 }
 
 .content {
-    flex-grow: 1;
-    flex-shrink: 0;
+  flex-grow: 1;
+  flex-shrink: 0;
 }
 
 .content_center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

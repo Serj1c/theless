@@ -3,13 +3,13 @@ import Logo from './components/Logo/Logo';
 import styles from './Header.module.css';
 
 interface Props {
-    inverted?: boolean;
+  inverted?: boolean;
 }
 
 const Header = ({ inverted }: Props): JSX.Element => (
-    <div className={styles.root}>
-        <Logo inverted={inverted} />
-    </div>
+  <div className={styles.root}>
+    <Logo inverted={inverted} />
+  </div>
 );
 
 export default Header;

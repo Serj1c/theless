@@ -1,69 +1,69 @@
 interface State {
-   isSubmitting: boolean;
-   isSubmitted: boolean;
-   errors?: ErrorsField;
-   error?: string;
+  isSubmitting: boolean;
+  isSubmitted: boolean;
+  errors?: ErrorsField;
+  error?: string;
 }
 
 interface ErrorsField {
-    email?: string;
+  email?: string;
 }
 
 export const initialState: State = {
-    isSubmitting: false,
-    isSubmitted: false,
+  isSubmitting: false,
+  isSubmitted: false,
 };
 
 export interface ActionRequest {
-    type: 'REQUEST';
+  type: 'REQUEST';
 }
 
 export interface ActionSuccess {
-    type: 'SUCCESS';
+  type: 'SUCCESS';
 }
 
 export interface ActionFailure {
-    type: 'FAILURE';
-    payload: FailurePayload;
+  type: 'FAILURE';
+  payload: FailurePayload;
 }
 
 export interface FailurePayload {
-    error?: string;
-    errors?: {
-        [key: string]: string;
-    };
+  error?: string;
+  errors?: {
+    [key: string]: string;
+  };
 }
 
 type Action = ActionRequest | ActionSuccess | ActionFailure;
 
 export const reducer = (state: State, action: Action): State => {
-    switch (action.type) {
+  switch (action.type) {
     case 'REQUEST': {
-        return {
-            ...state,
-            isSubmitting: true,
-        };
+      return {
+        ...state,
+        isSubmitting: true,
+      };
     }
     case 'SUCCESS': {
-        return {
-            ...state,
-            isSubmitting: false,
-            isSubmitted: true,
-            errors: undefined,
-            error: undefined,
-        };
+      return {
+        ...state,
+        isSubmitting: false,
+        isSubmitted: true,
+        errors: undefined,
+        error: undefined,
+      };
     }
     case 'FAILURE': {
-        const { error, errors } = action.payload;
-        return {
-            ...state,
-            isSubmitting: false,
-            errors,
-            error,
-        };
+      const { error, errors } = action.payload;
+      return {
+        ...state,
+        isSubmitting: false,
+        errors,
+        error,
+      };
     }
     default: {
-        return state;
+      return state;
     }
-    }
+  }
 };

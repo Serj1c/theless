@@ -1,12 +1,12 @@
 .root {
-    display: flex;
-    flex-direction: column;
-    min-height: 192px;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 192px;
+  justify-content: center;
+  align-items: center;
 }
 
 .icon {
-    width: 70px;
-    height: 70px;
+  width: 70px;
+  height: 70px;
 }

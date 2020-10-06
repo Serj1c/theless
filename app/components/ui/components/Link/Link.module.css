@@ -1,37 +1,37 @@
 .root {
-    outline: none;
-    border: none;
-    text-decoration: none;
+  outline: none;
+  border: none;
+  text-decoration: none;
 }
 
 .root:focus,
 .root:active {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 /* Size modifier */
 .root_size_l {
-    line-height: 48px;
-    font-size: 18px;
-    padding: 0 24px;
+  line-height: 48px;
+  font-size: 18px;
+  padding: 0 24px;
 }
 
 .root_size_m {
-    line-height: 38px;
-    font-size: 16px;
-    padding: 0 19px;
+  line-height: 38px;
+  font-size: 16px;
+  padding: 0 19px;
 }
 
 .root_size_s {
-    line-height: 28px;
-    font-size: 13px;
-    padding: 0 14px;
+  line-height: 28px;
+  font-size: 13px;
+  padding: 0 14px;
 }
 
 /* Design modifier */
 
 .root_design_link {
-    color: #3677c2;
+  color: #3677c2;
 }
 
 /* NOTE Link as a Button designs */
@@ -39,130 +39,130 @@
 .root_design_secondary,
 .root_design_danger,
 .root_design_default {
-    display: inline-block;
-    overflow: hidden;
-    box-sizing: border-box;
-    margin: 0 auto;
-    min-width: 54px;
-    border-radius: 4px;
-    color: #fff;
-    vertical-align: middle;
-    text-align: center;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  display: inline-block;
+  overflow: hidden;
+  box-sizing: border-box;
+  margin: 0 auto;
+  min-width: 54px;
+  border-radius: 4px;
+  color: #fff;
+  vertical-align: middle;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* Design - primary */
 .root_design_primary {
-    background-color: #6FBFEC;
+  background-color: #6fbfec;
 }
 
 .root_design_primary:focus {
-    background-color: #67AACF;
+  background-color: #67aacf;
 }
 
 .root_design_primary:active {
-    background-color: #67AACF;
+  background-color: #67aacf;
 }
 
 .root_design_primary:disabled {
-    background-color: #8CCBEF;
-    color: #E8F5FC;
+  background-color: #8ccbef;
+  color: #e8f5fc;
 }
 
 /* Design - secondary */
 .root_design_secondary {
-    background-color: #9BC53D;
+  background-color: #9bc53d;
 }
 
 .root_design_secondary:focus {
-    background-color: #87AA37;
+  background-color: #87aa37;
 }
 
 .root_design_secondary:active {
-    background-color: #87AA37;
+  background-color: #87aa37;
 }
 
 .root_design_secondary:disabled {
-    background-color: #E7F1D0;
-    color: #AFD164;
+  background-color: #e7f1d0;
+  color: #afd164;
 }
 
 /* Design - danger */
 .root_design_danger {
-    background-color: #FF6163;
+  background-color: #ff6163;
 }
 
 .root_design_danger:focus {
-    background-color: #E05759;
+  background-color: #e05759;
 }
 
 .root_design_danger:active {
-    background-color: #E05759;
+  background-color: #e05759;
 }
 
 .root_design_danger:disabled {
-    background-color: #FF8182;
-    color: #FFE6E6;
+  background-color: #ff8182;
+  color: #ffe6e6;
 }
 
 /* Design - default */
 .root_design_default {
-    background-color: #CCCCCC;
-    color: #000;
+  background-color: #cccccc;
+  color: #000;
 }
 
 .root_design_default:focus {
-    background-color: #BBBBBB;
+  background-color: #bbbbbb;
 }
 
 .root_design_default:active {
-    background-color: #BBBBBB;
+  background-color: #bbbbbb;
 }
 
 .root_design_default:disabled {
-    background-color: #D6D6D6;
-    color: #565656;
+  background-color: #d6d6d6;
+  color: #565656;
 }
 
 /* Fullwidth modifier */
 .root_fullwidth {
-    width: 100%;
+  width: 100%;
 }
 
 /* Rounded modifier */
 .root_rounded {
-    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 /* With different size */
 .root_rounded.root_size_s {
-    border-radius: 14px;
+  border-radius: 14px;
 }
 
 .root_rounded.root_size_m {
-    border-radius: 18px;
+  border-radius: 18px;
 }
 
 .root_rounded.root_size_l {
-    border-radius: 24px;
+  border-radius: 24px;
 }
 
 /* With different design */
 .root_rounded.root_design_default {
-    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
-    background-color: #FFF;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  background-color: #fff;
 }
 
 .root_rounded.root_design_default:focus {
-    background-color: #F4F4F4;
+  background-color: #f4f4f4;
 }
 
 .root_rounded.root_design_default:active {
-    background-color: #F4F4F4;
+  background-color: #f4f4f4;
 }
 
 .root_rounded.root_design_default:disabled {
-    background-color: #F4F4F4;
-    color: #F4F4F4;
+  background-color: #f4f4f4;
+  color: #f4f4f4;
 }

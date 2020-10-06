@@ -1,32 +1,32 @@
 .root {
-    font-size: initial;
+  font-size: initial;
 }
 
 /* Text aling modifiers */
 .root_aling_left {
-    text-align: left;
+  text-align: left;
 }
 
 .root_align_center {
-    text-align: center;
+  text-align: center;
 }
 
 .root_align_right {
-    text-align: right;
+  text-align: right;
 }
 
 /* Weight modifiers */
 .root_weight_bold {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .root_weight_normal {
-    font-weight: 300;
+  font-weight: 300;
 }
 
 /* Nowrap modifire */
 .root_nowrap {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
