@@ -11,7 +11,7 @@
 
 1. Run `docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d`.
 
-### Add local certificates (Chrome)
+### Add local certificates (Google Chrome)
 
 1. Open Chrome Settings -> Security -> Manage certificates
 2. Drag and drop certificates (taken from /certs) there
