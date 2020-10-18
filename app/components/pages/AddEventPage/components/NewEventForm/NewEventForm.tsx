@@ -1,5 +1,5 @@
-import React, { memo } from 'react';
-import { Form, FormAction, Button } from 'components/ui';
+import React from 'react';
+import { Button, Form, FormAction } from 'components/ui';
 import InputRow from './components/Row/Row';
 
 interface Fields {
@@ -70,7 +70,7 @@ const NewEventForm = ({
   );
 };
 
-export default memo(NewEventForm);
+export default NewEventForm;
 
 function getFocusField(
   errors: Partial<Fields>,

@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import styles from './Input.module.css';
 
@@ -34,4 +34,4 @@ const Input = ({
   return <input ref={ref} className={className} {...restProps} />;
 };
 
-export default memo(Input);
+export default Input;

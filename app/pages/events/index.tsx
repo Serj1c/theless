@@ -1,9 +1,9 @@
 import React from 'react';
 import { GetServerSideProps, NextPage } from 'next';
 import ErrorPage from 'next/error';
+import { axios } from 'utils';
 import { EventsPage } from 'components/pages';
 import { EventModel } from 'models';
-import jsonrpc from 'utils/jsonrpc';
 
 interface Props {
   list?: EventModel[];
@@ -13,7 +13,10 @@ interface Props {
   };
 }
 
-const EventPageComponent: NextPage<Props> = ({ list, error }): JSX.Element => {
+/**
+ * EventPageComponent component
+ */
+const EventPageComponent: NextPage<Props> = ({ list, error }) => {
   if (error) {
     return <ErrorPage statusCode={error.code} title={error.message} />;
   }
@@ -21,18 +24,19 @@ const EventPageComponent: NextPage<Props> = ({ list, error }): JSX.Element => {
   return <EventsPage title='Ближайшие спортивные события' list={list} />;
 };
 
+/**
+ * SSR initialisation
+ */
 export const getServerSideProps: GetServerSideProps<Props> = async () => {
-  let list: EventModel[];
-
   try {
-    list = await jsonrpc.request<EventModel[]>('Events.GetListV1');
+    const { data } = await axios.get<EventModel[]>('/events');
 
     return {
       props: {
-        list: list || [],
+        list: data || [],
       },
     };
-  } catch (error) {
+  } catch (_) {
     // TODO Log into Sentry
     // TODO Handle all kind of errors
 

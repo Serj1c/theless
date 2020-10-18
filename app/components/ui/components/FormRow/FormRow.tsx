@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import Row from '../Row/Row';
 import Col from '../Col/Col';
 import Text from '../Text/Text';
@@ -54,4 +54,4 @@ FormRow.defaultProps = {
   size: 'm',
 };
 
-export default memo(FormRow);
+export default FormRow;

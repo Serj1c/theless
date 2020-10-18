@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import { FullWidthCol, Row } from 'components/ui';
 import styles from './Cover.module.css';
 
@@ -16,4 +16,4 @@ const Cover = ({ img }: Props): JSX.Element => (
   </Row>
 );
 
-export default memo(Cover);
+export default Cover;

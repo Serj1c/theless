@@ -1,23 +1,21 @@
 package events
 
 import (
-	"github.com/gorilla/rpc/v2/json2"
+	"encoding/json"
+	"fmt"
 	"github.com/varkadov/theless/api/config"
 	"github.com/varkadov/theless/api/libs/slack"
 	"gopkg.in/go-playground/validator.v9"
 	"gopkg.in/mgo.v2/bson"
 	"net/http"
+	"os"
 	"time"
 )
 
-var validate *validator.Validate
-
-type SubscribeV1Params struct {
+type subscribePayload struct {
 	Email   string `json:"email" validate:"required,email"`
 	EventID string `json:"eventId" validate:"-"`
 }
-
-type Reply struct {}
 
 type Doc struct {
 	Email   string    `bson:"email"`
@@ -26,20 +24,30 @@ type Doc struct {
 	Date    time.Time `bson:"date"`
 }
 
-func (e *EventService) SubscribeV1(r *http.Request, params *SubscribeV1Params, reply *Reply) error {
+func subscribe(w http.ResponseWriter, r *http.Request) {
+	payload := subscribePayload{}
+
+	err := json.NewDecoder(r.Body).Decode(&payload)
+
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
 	validate = validator.New()
 
-	err := validate.Struct(params)
+	err = validate.Struct(payload)
 
 	if err != nil {
 		if _, ok := err.(*validator.InvalidValidationError); ok {
-			return err
+			http.Error(w, err.Error(), http.StatusBadRequest)
+			return
 		}
 
 		// TODO Make good
 		msg := map[string]map[string]string{
 			"Email": {
-				"email": "Введите корректный email",
+				"email":    "Введите корректный email",
 				"required": "Введите email",
 			},
 		}
@@ -56,15 +64,22 @@ func (e *EventService) SubscribeV1(r *http.Request, params *SubscribeV1Params, r
 			}
 		}
 
-		return &json2.Error{
-			Code: json2.E_BAD_PARAMS,
-			Message: "Bad request",
-			Data: data,
+		s, err := json.Marshal(data)
+
+		fmt.Println(s)
+
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
 		}
+
+		w.WriteHeader(http.StatusBadRequest)
+		_, _ = fmt.Fprintf(w, "%s", s)
+		return
 	}
 
-	email := params.Email
-	eventId := params.EventID
+	email := payload.Email
+	eventId := payload.EventID
 
 	doc := &Doc{
 		Email: email,
@@ -79,11 +94,12 @@ func (e *EventService) SubscribeV1(r *http.Request, params *SubscribeV1Params, r
 	err = config.SubscriptionsCollection.Insert(doc)
 
 	if err != nil {
-		return err
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
 	}
 
-	// Sending log to the Slack
-	slack.SendMessage("New subscription: " + email)
-
-	return nil
+	if os.Getenv("ENV") != "development" {
+		// Sending log to the Slack
+		slack.SendMessage("New subscription: " + email)
+	}
 }

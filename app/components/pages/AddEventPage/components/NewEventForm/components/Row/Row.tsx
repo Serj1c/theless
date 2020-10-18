@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import { FormRow, Input, Textarea } from 'components/ui';
 
 interface Props {
@@ -48,4 +48,4 @@ const Row = ({
   </FormRow>
 );
 
-export default memo(Row);
+export default Row;

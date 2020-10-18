@@ -1,5 +1,5 @@
-import React, { memo, useCallback, useState } from 'react';
-import { Input, Button, Form, FormRow } from 'components/ui';
+import React, { useCallback, useState } from 'react';
+import { Button, Form, FormRow, Input } from 'components/ui';
 import styles from './Form.module.css';
 
 interface Props {
@@ -23,6 +23,7 @@ const FormComponent = ({
   isFetching,
   title,
   errors,
+  error,
 }: Props): JSX.Element => {
   const [email, setEmail] = useState<string>('');
 
@@ -43,7 +44,7 @@ const FormComponent = ({
   ); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <Form narrow title={title} onSubmit={handleSubmit}>
+    <Form error={error} narrow title={title} onSubmit={handleSubmit}>
       <div className={styles.inputs}>
         <FormRow error={errors && errors.email} center>
           <Input
@@ -71,4 +72,4 @@ const FormComponent = ({
   );
 };
 
-export default memo(FormComponent);
+export default FormComponent;

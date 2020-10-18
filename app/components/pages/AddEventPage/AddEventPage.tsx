@@ -1,7 +1,8 @@
-import React, { useReducer, useCallback } from 'react';
-import { Page, Header, Footer } from 'components/common';
-import { Row, Col } from 'components/ui';
-import jsonrpc, { JsonrpcError, HTTPError } from 'utils/jsonrpc';
+import React, { useCallback, useReducer } from 'react';
+import { Footer, Header, Page } from 'components/common';
+import { Col, Row } from 'components/ui';
+import { ERROR_MESSAGE_OTHER } from 'constants/errors';
+import { axios, isAxiosError } from 'utils';
 import Form from './components/NewEventForm/NewEventForm';
 import Success from './components/Success/Success';
 import {
@@ -10,11 +11,13 @@ import {
   initState,
   reducer,
 } from './reducer';
-import { ERROR_MESSAGE_HTTP, ERROR_MESSAGE_OTHER } from 'constants/errors';
 
-export const AddEventPage = () => {
+export const AddEventPage = (): JSX.Element => {
   const [state, dispatch] = useReducer(reducer, initState);
 
+  /**
+   * Form submit handler
+   */
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = useCallback(
     async (event) => {
       event.preventDefault();
@@ -24,7 +27,7 @@ export const AddEventPage = () => {
       });
 
       try {
-        await jsonrpc.request('Events.AddV1', state.data);
+        await axios.post('/events', state.data);
 
         dispatch({
           type: ActionsTypes.submitSuccess,
@@ -32,10 +35,14 @@ export const AddEventPage = () => {
       } catch (error) {
         const payload: ActionSubmitFailurePayload = {};
 
-        if (error instanceof JsonrpcError && error.data) {
-          payload.errors = error.data;
-        } else if (error instanceof HTTPError) {
-          payload.error = ERROR_MESSAGE_HTTP;
+        if (isAxiosError(error)) {
+          const { data } = error.response;
+
+          if (typeof data === 'string') {
+            payload.error = data;
+          } else {
+            payload.errors = data;
+          }
         } else {
           payload.error = ERROR_MESSAGE_OTHER;
         }
@@ -62,6 +69,7 @@ export const AddEventPage = () => {
       },
     });
   }, []);
+
   return (
     <Page
       center={state.isFetched}

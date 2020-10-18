@@ -27,7 +27,11 @@ const Form = ({
           <Header level={2} margin='none' align={narrow ? 'center' : undefined}>
             {title}
           </Header>
-          {error && <Paragraph color='danger'>{error}</Paragraph>}
+          {error && (
+            <Paragraph color='danger' align={narrow ? 'center' : 'left'}>
+              {error}
+            </Paragraph>
+          )}
         </Col>
       </Row>
     )}

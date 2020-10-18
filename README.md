@@ -17,6 +17,14 @@
 2. Drag and drop certificates (taken from /certs) there
 3. Double click on each of them -> Trust -> "Always Trust"
 
+### API service development
+
+`cd api && go get ./...` - install deps.
+
+### Rebuild docker images and start
+
+1. Run `ENV=development docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build`.
+
 ## Prod environment
 
 ### Deploy
@@ -36,3 +44,7 @@
                 certbot/certbot certonly
     ```
 2. Update `theless.ru`, `www.theless.ru`, `the-less.ru` and `www.the-less.ru` certificates.
+
+### Connect to the container
+
+E.g. mongo container `docker-compose exec db mongo`

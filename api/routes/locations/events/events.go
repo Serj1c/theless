@@ -1,9 +1,15 @@
 package events
 
 import (
+	"github.com/go-chi/chi"
 	"gopkg.in/mgo.v2/bson"
 	"time"
 )
+
+type Location struct {
+	Name string `json:"name" bson:"name"`
+	Slug string `json:"slug" bson:"slug"`
+}
 
 type EventItem struct {
 	Id          bson.ObjectId `json:"id" bson:"_id,omitempty"`
@@ -19,9 +25,10 @@ type EventItem struct {
 	Link        string        `json:"link" bson:"link"`
 }
 
-type Location struct {
-	Name string `json:"name" bson:"name"`
-	Slug string `json:"slug" bson:"slug"`
-}
+func Router() chi.Router {
+	r := chi.NewRouter()
 
-type EventService struct{}
+	r.Get("/{eventSlug}", getItem)
+
+	return r
+}

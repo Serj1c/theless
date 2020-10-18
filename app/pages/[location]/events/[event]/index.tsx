@@ -1,10 +1,10 @@
 import React from 'react';
-import { ParsedUrlQuery } from 'querystring';
 import { GetServerSideProps, NextPage } from 'next';
 import Error from 'next/error';
+import { ParsedUrlQuery } from 'querystring';
 import { EventPage } from 'components/pages';
 import { EventModel } from 'models/EventModel';
-import jsonrpc from 'utils/jsonrpc';
+import { axios } from 'utils';
 
 interface Params extends ParsedUrlQuery {
   event: string;
@@ -13,42 +13,43 @@ interface Params extends ParsedUrlQuery {
 
 interface Props {
   item?: EventModel;
-  error?: string;
+  error?: boolean;
 }
 
+/**
+ * Event page component
+ */
 const EventPageComponent: NextPage<Props> = ({ item, error }) => {
   if (error) {
-    return <Error statusCode={404} title={error} />;
+    return <Error statusCode={404} title={'Событие не найдено'} />;
   }
 
   return <EventPage item={item} />;
 };
 
+/**
+ * SSR initialisation
+ */
 export const getServerSideProps: GetServerSideProps<Props, Params> = async ({
   params,
 }) => {
   const { event, location } = params;
-  let result: {
-    item: EventModel;
-  };
 
   try {
-    result = await jsonrpc.request('Events.GetV1', {
-      locationSlug: location,
-      eventSlug: event,
-    });
+    const { data } = await axios.get<EventModel>(
+      `/locations/${location}/events/${event}`
+    );
 
     return {
       props: {
-        item: result.item,
+        item: data,
       },
     };
   } catch (error) {
     // TODO Log in Sentry
     return {
       props: {
-        // TODO Fix error shape
-        error: error.message,
+        error: true,
       },
     };
   }

@@ -21,6 +21,11 @@ const handleRouteChangeComplete = (url: string): void => {
 
 const App = ({ Component, pageProps }: Props): JSX.Element => {
   useEffect(() => {
+    // Don't init metrics in dev environment
+    if (process.env.NODE_ENV === 'development') {
+      return () => {};
+    }
+
     initYM(YM_ID, YM_OPTIONS);
     initGA(GA_ID);
 

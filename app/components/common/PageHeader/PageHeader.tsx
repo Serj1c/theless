@@ -1,6 +1,6 @@
-import React, { memo } from 'react';
+import React from 'react';
 import Head from 'next/head';
-import { Row, Col, Header } from 'components/ui';
+import { Col, Header, Row } from 'components/ui';
 import { TITLE_PREFIX } from 'constants/common';
 
 interface Props {
@@ -25,4 +25,4 @@ const PageHeader = ({ title }: Props): JSX.Element => (
   </>
 );
 
-export default memo(PageHeader);
+export default PageHeader;

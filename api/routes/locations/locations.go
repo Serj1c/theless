@@ -1,6 +1,10 @@
 package locations
 
-import "gopkg.in/mgo.v2/bson"
+import (
+	"github.com/go-chi/chi"
+	"github.com/varkadov/theless/api/routes/locations/events"
+	"gopkg.in/mgo.v2/bson"
+)
 
 type Location struct {
 	Id           bson.ObjectId `json:"id" bson:"_id"`
@@ -9,4 +13,12 @@ type Location struct {
 	Slug         string        `json:"slug" bson:"slug"`
 }
 
-type LocationService struct {}
+func Router() chi.Router {
+	r := chi.NewRouter()
+
+	r.Get("/current", getCurrent)
+
+	r.Mount("/{locationSlug}/events", events.Router())
+
+	return r
+}

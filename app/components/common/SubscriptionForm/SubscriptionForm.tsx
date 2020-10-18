@@ -1,10 +1,10 @@
-import React, { memo, useCallback, useReducer } from 'react';
-import { HTTPError, jsonRpcClient, JsonrpcError } from 'utils/jsonrpc';
+import React, { useCallback, useReducer } from 'react';
+import { Col, Row } from 'components/ui';
+import { ERROR_MESSAGE_OTHER } from 'constants/errors';
+import { axios, isAxiosError } from 'utils';
 import Form, { OnSubmitParams } from './components/Form/Form';
 import Success from './components/Success/Success';
-import { Col, Row } from 'components/ui';
 import { FailurePayload, initialState, reducer } from './reducers/reducers';
-import { ERROR_MESSAGE_HTTP, ERROR_MESSAGE_OTHER } from 'constants/errors';
 
 interface Props {
   title: string;
@@ -21,16 +21,18 @@ const SubscriptionForm = ({ title, params = {} }: Props): JSX.Element => {
       try {
         dispatch({ type: 'REQUEST' });
 
-        await jsonRpcClient.request('Events.SubscribeV1', { ...params, email });
+        await axios.post('/events/subscribe', { ...params, email });
 
         dispatch({ type: 'SUCCESS' });
-      } catch (error) {
+      } catch (err) {
         const payload: FailurePayload = {};
 
-        if (error instanceof JsonrpcError && error.data) {
-          payload.errors = error.data;
-        } else if (error instanceof HTTPError) {
-          payload.error = ERROR_MESSAGE_HTTP;
+        if (isAxiosError(err)) {
+          if (typeof err.response.data === 'string') {
+            payload.error = err.response.data;
+          } else {
+            payload.errors = err.response.data;
+          }
         } else {
           payload.error = ERROR_MESSAGE_OTHER;
         }
@@ -63,4 +65,4 @@ const SubscriptionForm = ({ title, params = {} }: Props): JSX.Element => {
   );
 };
 
-export default memo(SubscriptionForm);
+export default SubscriptionForm;

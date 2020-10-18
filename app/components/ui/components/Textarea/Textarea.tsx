@@ -1,4 +1,4 @@
-import React, { memo, useRef, useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import styles from './Textarea.module.css';
 
@@ -25,4 +25,4 @@ Textarea.defaultProps = {
   size: 'm',
 };
 
-export default memo(Textarea);
+export default Textarea;

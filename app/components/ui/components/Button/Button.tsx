@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import Loader from '../Loader/Loader';
 import styles from './Button.module.css';
@@ -55,4 +55,4 @@ const Button = ({
   );
 };
 
-export default memo(Button);
+export default Button;

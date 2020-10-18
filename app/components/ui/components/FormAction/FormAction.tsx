@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import Row from '../Row/Row';
 import Col from '../Col/Col';
 
@@ -14,4 +14,4 @@ const FormAction = ({ children }: Props): JSX.Element => (
   </Row>
 );
 
-export default memo(FormAction);
+export default FormAction;
