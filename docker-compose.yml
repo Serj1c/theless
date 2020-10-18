@@ -31,6 +31,14 @@ services:
     networks:
       - backend
 
+  migrations:
+    build:
+      context: './migrations'
+    depends_on:
+      - db
+    networks:
+      - backend
+
   api:
     build:
       context: './api'
