@@ -1,7 +1,7 @@
 import moment from 'moment';
 import { EventModel } from 'models/EventModel';
 
-export default (list: EventModel[], inclusive = false) => {
+export const filterEvents = (list: EventModel[], inclusive = false) => {
   const week: EventModel[] = [];
   const month: EventModel[] = [];
   const rest: EventModel[] = [];

@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { Col, Row } from 'components/ui';
 import { EventModel } from 'models/EventModel';
 import { EventsSection } from 'components/common/EventsSection';
-import filterEvents from './utils/filterEvents';
+import { filterEvents } from './utils/filterEvents';
 
 interface Props {
   list: EventModel[];
