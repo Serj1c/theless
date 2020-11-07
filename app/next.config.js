@@ -8,6 +8,11 @@ module.exports = {
     config.resolve.alias['models'] = path.join(__dirname, 'models');
     config.resolve.alias['utils'] = path.join(__dirname, 'utils');
 
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    });
+
     return config;
   },
 };

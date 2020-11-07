@@ -16,9 +16,4 @@ const FavoritePage: NextPage = () => (
   </>
 );
 
-// NOTE Temporary fix to disable static rendering
-export const getServerSideProps = async () => {
-  return;
-};
-
 export default FavoritePage;
