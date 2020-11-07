@@ -7,20 +7,17 @@ type Size = 's' | 'm' | 'l';
 type Color = 'inverted';
 
 interface Props {
-  size: Size;
+  size?: Size;
   color?: Color;
 }
 
-const Loader = ({ size = 'm', color }: Props): JSX.Element => {
+export const Loader: React.FunctionComponent<Props> = ({
+  size = 'm',
+  color,
+}: Props): JSX.Element => {
   const className = classNames(styles.root, styles[`root_size_${size}`], {
     [styles[`root_color_${color}`]]: color,
   });
 
   return <div className={className} />;
 };
-
-Loader.defaultProps = {
-  size: 'm',
-};
-
-export default Loader;

@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import Router from 'next/router';
 import { GA_ID, YM_ID, YM_OPTIONS } from 'constants/common';
+import { NotificationsProvider, UserProvider } from 'components/providers';
 import { init as initYM } from 'utils/YandexMetrika';
 import { init as initGA } from 'utils/GoogleAnalitics';
 import './styles.css';
-import { UserProvider } from '../components/providers';
 
 interface Props {
   Component: React.FunctionComponent;
@@ -39,9 +39,11 @@ const App = ({ Component, pageProps }: Props): JSX.Element => {
   }, []);
 
   return (
-    <UserProvider>
-      <Component {...pageProps} />
-    </UserProvider>
+    <NotificationsProvider>
+      <UserProvider>
+        <Component {...pageProps} />
+      </UserProvider>
+    </NotificationsProvider>
   );
 };
 

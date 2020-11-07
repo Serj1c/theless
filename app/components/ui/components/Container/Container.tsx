@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import styles from './Container.module.css';
 
@@ -6,13 +6,11 @@ interface Props {
   fluid?: boolean;
 }
 
-const Container = ({
+export const Container: React.FunctionComponent<Props> = ({
   fluid,
   children,
-}: PropsWithChildren<Props>): JSX.Element => {
+}) => {
   const className = classNames(styles.root, { [styles.root_fluid]: fluid });
 
   return <div className={className}>{children}</div>;
 };
-
-export default Container;

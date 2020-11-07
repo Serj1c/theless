@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import ymapFetcher from 'utils/ymap-fetcher/ymap-fetcher';
 import styles from './Map.module.css';
 
@@ -6,7 +6,7 @@ interface Props {
   coords: [number, number];
 }
 
-const Map = ({ coords }: Props): JSX.Element => {
+export const Map: React.FunctionComponent<Props> = ({ coords }) => {
   const divRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -40,5 +40,3 @@ const Map = ({ coords }: Props): JSX.Element => {
 
   return <div className={styles.root} ref={divRef} />;
 };
-
-export default memo(Map);

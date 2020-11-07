@@ -1,8 +1,7 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import classNames from 'classnames';
 import { Margin } from '../../common/margins';
-import Text, { Size, Color } from '../Text/Text';
+import { Color, Size, Text } from '../Text/Text';
 import marginStyles from '../../common/margins.module.css';
 import lineHeightStyles from '../../common/line-heights.module.css';
 import styles from './Header.module.css';
@@ -43,7 +42,7 @@ const paramsByLevel: ParamsByLevel = {
 
 export interface Props extends WithoutClassName {
   /** Header level */
-  level: Level;
+  level?: Level;
   /** Texts size */
   size?: Size;
   /** One line text */
@@ -62,19 +61,19 @@ export interface Props extends WithoutClassName {
   marginBottom?: Margin;
 }
 
-const Header = ({
-  level,
+export const Header: React.FunctionComponent<Props> = ({
+  level = 2,
   size,
   color,
   weight = 'bold',
-  align,
+  align = 'left',
   noWrap,
   margin,
   marginTop,
   marginBottom,
   children,
   ...props
-}: Props): JSX.Element => {
+}) => {
   const sizeValue: Size = size || paramsByLevel[level].size;
   const marginTopValue: Margin =
     marginTop || margin || paramsByLevel[level].marginTop;
@@ -105,11 +104,3 @@ const Header = ({
 
   return React.createElement(tagName, headerProps, <Text {...textProps} />);
 };
-
-Header.defaultProps = {
-  level: 2,
-  align: 'left',
-  weight: 'bold',
-};
-
-export default Header;

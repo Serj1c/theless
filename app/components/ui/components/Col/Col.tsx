@@ -38,7 +38,7 @@ interface Props {
 
 const DEFAULT_MARGIN = 'none';
 
-const Col = ({
+export const Col: React.FunctionComponent<Props> = ({
   children,
   cols,
   colsSM,
@@ -56,7 +56,7 @@ const Col = ({
   noGutters,
   align,
   verticalAlign,
-}: Props): JSX.Element => {
+}) => {
   const className = classNames(
     styles.root,
     marginsStyles[`top_${margin || marginTop}`],
@@ -80,5 +80,3 @@ const Col = ({
 
   return <div className={className}>{children}</div>;
 };
-
-export default Col;

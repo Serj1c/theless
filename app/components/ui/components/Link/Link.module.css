@@ -34,6 +34,19 @@
   color: #3677c2;
 }
 
+.root_design_link.root_color_light,
+.root_design_link.root_color_dark {
+  text-decoration: underline;
+}
+
+.root_design_link.root_color_light {
+  color: var(--font_color_light);
+}
+
+.root_design_link.root_color_dark {
+  color: var(--font_color_main);
+}
+
 /* NOTE Link as a Button designs */
 .root_design_primary,
 .root_design_secondary,

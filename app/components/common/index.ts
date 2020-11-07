@@ -1,21 +1,10 @@
-import Footer from './Footer/Footer';
-import Headline from './Headline/Headline';
-import NoEvents from './NoEvents/NoEvents';
-import Overview from './Overview/Overview';
-import Page from './Page/Page';
-import SubscriptionForm from './SubscriptionForm/SubscriptionForm';
-import PageHeader from './PageHeader/PageHeader';
-import Map from './Map/Map';
-
-export { Header } from './Header/Header';
-
-export {
-  Footer,
-  Headline,
-  NoEvents,
-  Overview,
-  Page,
-  SubscriptionForm,
-  PageHeader,
-  Map,
-};
+export { Footer } from './Footer';
+export { Header } from './Header';
+export { Headline } from './Headline';
+export { Map } from './Map';
+export { NoEvents } from './NoEvents';
+export { Overview } from './Overview';
+export { Page } from './Page';
+export { PageHeader } from './PageHeader';
+export { SubscriptionForm } from './SubscriptionForm';
+export { Icon } from './Icon';

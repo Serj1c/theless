@@ -1,14 +1,14 @@
-import React, { memo, useMemo } from 'react';
-import { Row, Col } from 'components/ui';
+import React, { useMemo } from 'react';
+import { Col, Row } from 'components/ui';
 import { EventModel } from 'models/EventModel';
-import EventsSection from 'components/common/EventsSection/EventsSection';
+import { EventsSection } from 'components/common/EventsSection';
 import filterEvents from './utils/filterEvents';
 
 interface Props {
   list: EventModel[];
 }
 
-const Overview = ({ list }: Props): JSX.Element => {
+export const Overview: React.FunctionComponent<Props> = ({ list }) => {
   const [thisWeekEvents, thisMonthEvents, restEvents] = useMemo(
     () => filterEvents(list),
     [list]
@@ -54,5 +54,3 @@ const Overview = ({ list }: Props): JSX.Element => {
     </Row>
   );
 };
-
-export default memo(Overview);

@@ -1,30 +1,34 @@
 import React from 'react';
 import classNames from 'classnames';
-import Link, { LinkProps } from 'next/link';
+import NextLink, { LinkProps } from 'next/link';
 import styles from './Link.module.css';
 
 type Design = 'link' | 'primary' | 'secondary' | 'danger' | 'default';
+type Color = 'light' | 'dark';
 type Size = 's' | 'm' | 'l';
 
 // TODO Extends add Link attributes
 interface Props extends LinkProps {
   design?: Design;
   size?: Size;
+  color?: Color;
   rounded?: boolean;
   children: React.ReactNode;
   target?: string;
 }
 
-const LinkComponent = ({
+export const Link: React.FunctionComponent<Props> = ({
   design = 'link',
+  color,
   rounded,
   size = 'm',
   href,
   as,
   ...props
-}: Props): JSX.Element => {
+}) => {
   const isButtonDesign = design !== 'link';
   const className = classNames(styles.root, styles[`root_design_${design}`], {
+    [styles[`root_color_${color}`]]: color,
     [styles[`root_size_${size}`]]: size && isButtonDesign,
     [styles.root_rounded]: rounded && isButtonDesign,
   });
@@ -37,10 +41,8 @@ const LinkComponent = ({
   }
 
   return (
-    <Link href={href} as={as} passHref>
+    <NextLink href={href} as={as} passHref>
       <a {...props} href={href as string} className={className} />
-    </Link>
+    </NextLink>
   );
 };
-
-export default LinkComponent;

@@ -1,7 +1,6 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import classNames from 'classnames';
-import Text, { Size, Color } from '../Text/Text';
+import { Color, Size, Text } from '../Text/Text';
 import { Margin } from '../../common/margins';
 import marginStyles from '../../common/margins.module.css';
 import lineHeightStyles from '../../common/line-heights.module.css';
@@ -13,13 +12,13 @@ type WithoutClassName = Omit<React.HTMLAttributes<HTMLElement>, 'className'>;
 
 export interface Props extends WithoutClassName {
   /** Text size */
-  size: Size;
+  size?: Size;
   /** Text color */
-  color: Color;
-  /** Text aligment */
-  align: Align;
+  color?: Color;
+  /** Text alignment */
+  align?: Align;
   /** Top and bottom margin */
-  margin: Margin;
+  margin?: Margin;
   /** Top margin */
   marginTop?: Margin;
   /** Bottom margin */
@@ -28,16 +27,16 @@ export interface Props extends WithoutClassName {
   marker?: string;
 }
 
-const Paragraph = ({
+export const Paragraph: React.FunctionComponent<Props> = ({
   children,
-  size,
-  color,
-  align,
-  margin,
+  size = 'm',
+  color = 'default',
+  align = 'left',
+  margin = 'xs',
   marginTop,
   marginBottom,
   ...props
-}: Props): JSX.Element => {
+}) => {
   const className = classNames(
     styles[`root_align_${align}`],
     lineHeightStyles[`line-height_${size}`],
@@ -53,12 +52,3 @@ const Paragraph = ({
     </p>
   );
 };
-
-Paragraph.defaultProps = {
-  size: 'm',
-  color: 'default',
-  align: 'left',
-  margin: 'xs',
-};
-
-export default Paragraph;

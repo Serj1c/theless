@@ -7,7 +7,7 @@ interface Props {
   item: EventModel;
 }
 
-const Description = ({ item }: Props): JSX.Element => (
+export const Description: React.FunctionComponent<Props> = ({ item }) => (
   <Row>
     <Col cols={12} colsLG={8}>
       <Paragraph marginTop='none' size='l' color='noaccent'>
@@ -35,5 +35,3 @@ const Description = ({ item }: Props): JSX.Element => (
     </Col>
   </Row>
 );
-
-export default Description;

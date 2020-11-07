@@ -1,7 +1,7 @@
-import React, { memo } from 'react';
-import { Row, Col, Header } from 'components/ui';
+import React from 'react';
+import { Col, Header, Row } from 'components/ui';
 import { EventModel } from 'models/EventModel';
-import Item from './components/Item/Item';
+import { Item } from './components/Item/Item';
 
 type Period = 'week' | 'month' | 'all';
 
@@ -12,28 +12,27 @@ interface Props {
   itemCount: number;
 }
 
-const EventsSection = ({ list, title }: Props): JSX.Element => {
-  return (
-    <>
-      {Boolean(title) && (
-        <Row margin='none'>
-          <Col cols={12}>
-            <Header level={2} align='center' marginTop='none'>
-              {title}
-            </Header>
-          </Col>
-        </Row>
-      )}
-
+export const EventsSection: React.FunctionComponent<Props> = ({
+  list,
+  title,
+}) => (
+  <>
+    {Boolean(title) && (
       <Row margin='none'>
-        {list.map((item) => (
-          <Col key={item.id} cols={12} colsSM={6} colsMD={4} marginBottom='xl'>
-            <Item item={item} />
-          </Col>
-        ))}
+        <Col cols={12}>
+          <Header level={2} align='center' marginTop='none'>
+            {title}
+          </Header>
+        </Col>
       </Row>
-    </>
-  );
-};
+    )}
 
-export default memo(EventsSection);
+    <Row margin='none'>
+      {list.map((item) => (
+        <Col key={item.id} cols={12} colsSM={6} colsMD={4} marginBottom='xl'>
+          <Item item={item} />
+        </Col>
+      ))}
+    </Row>
+  </>
+);

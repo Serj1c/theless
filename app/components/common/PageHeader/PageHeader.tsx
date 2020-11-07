@@ -7,22 +7,21 @@ interface Props {
   title: string;
 }
 
-const PageHeader = ({ title }: Props): JSX.Element => (
+export const PageHeader: React.FunctionComponent<Props> = ({ title }) => (
   <>
     {/* Render page meta */}
     <Head>
       <title>
-        {TITLE_PREFIX} {title}
+        {TITLE_PREFIX}
+        {title}
       </title>
     </Head>
 
     {/* Render page header */}
-    <Row>
+    <Row margin='none'>
       <Col>
         <Header level={1}>{title}</Header>
       </Col>
     </Row>
   </>
 );
-
-export default PageHeader;

@@ -8,7 +8,7 @@ const SignUpPage: NextPage = () => (
   <>
     {/* Render page meta */}
     <Head>
-      <title>{TITLE_PREFIX} Sign up</title>
+      <title>{TITLE_PREFIX}Регистрация</title>
     </Head>
 
     {/* Render page content */}

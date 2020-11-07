@@ -1,8 +1,13 @@
 .root {
   position: relative;
-  outline: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   border: none;
+  outline: none;
   text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .root:focus,
@@ -10,23 +15,30 @@
   text-decoration: none;
 }
 
+.root:disabled {
+  cursor: default;
+}
+
 /* Size modifier */
 .root_size_l {
-  line-height: 48px;
+  height: 56px;
+  min-width: 56px;
   font-size: 18px;
-  padding: 0 24px;
+  padding: 2px 22px;
 }
 
 .root_size_m {
-  line-height: 38px;
+  height: 40px;
+  min-width: 40px;
   font-size: 16px;
-  padding: 0 19px;
+  padding: 2px 20px;
 }
 
 .root_size_s {
-  line-height: 28px;
+  height: 28px;
+  min-width: 28px;
   font-size: 13px;
-  padding: 0 14px;
+  padding: 2px 14px;
 }
 
 /* Design modifier */
@@ -35,14 +47,11 @@
 .root_design_secondary,
 .root_design_danger,
 .root_design_default {
-  display: inline-block;
   overflow: hidden;
   box-sizing: border-box;
   margin: 0 auto;
-  min-width: 54px;
   border-radius: 4px;
   color: #fff;
-  vertical-align: middle;
   text-align: center;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -68,20 +77,21 @@
 
 /* Design - secondary */
 .root_design_secondary {
-  background-color: #9bc53d;
+  background-color: #ffd166;
+  color: #333;
+}
+
+.root_design_secondary:hover {
+  background-color: #facc61;
 }
 
 .root_design_secondary:focus {
-  background-color: #87aa37;
-}
-
-.root_design_secondary:active {
-  background-color: #87aa37;
+  box-shadow: 0 2px 8px #d7bc7d;
 }
 
 .root_design_secondary:disabled {
-  background-color: #e7f1d0;
-  color: #afd164;
+  background-color: #ffe09c;
+  color: #666;
 }
 
 /* Design - danger */
@@ -104,7 +114,8 @@
 
 /* Design - default */
 .root_design_default {
-  background-color: #cccccc;
+  background-color: #ccc;
+  border: 1px solid #ddd;
   color: #000;
 }
 
@@ -127,9 +138,6 @@
 }
 
 /* Rounded modifier */
-.root_rounded {
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-}
 
 /* With different size */
 .root_rounded.root_size_s {
@@ -137,16 +145,15 @@
 }
 
 .root_rounded.root_size_m {
-  border-radius: 18px;
+  border-radius: 20px;
 }
 
 .root_rounded.root_size_l {
-  border-radius: 24px;
+  border-radius: 28px;
 }
 
 /* With different design */
 .root_rounded.root_design_default {
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   background-color: #fff;
 }
 
@@ -174,4 +181,22 @@
   left: 50%;
   transform: translate(-50%, -50%);
   line-height: 1;
+}
+
+/* withIcon modifier */
+.root_withIcon {
+  padding-left: 14px;
+}
+
+.root_onlyIcon {
+  padding: 0;
+}
+
+.icon {
+  margin-right: 10px;
+  line-height: 0;
+}
+
+.icon_onlyIcon {
+  margin: 0;
 }

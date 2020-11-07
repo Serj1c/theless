@@ -1,0 +1,31 @@
+.root {
+  --padding: calc(2 * var(--step));
+
+  display: flex;
+  margin: var(--padding_s) 0;
+  padding: 0 var(--padding);
+  border-radius: var(--border_radius);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: var(--font_color_light);
+}
+
+.row_first {
+  flex-grow: 1;
+  margin-right: var(--padding_m);
+}
+
+.row_last {
+  margin: var(--padding) 0;
+}
+
+.contentWrapper {
+  margin: var(--padding) 0;
+}
+
+.close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  color: var(--font_color_light);
+}

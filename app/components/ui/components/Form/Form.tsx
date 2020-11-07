@@ -1,8 +1,8 @@
 import React from 'react';
-import Row from '../Row/Row';
-import Col from '../Col/Col';
-import Header from '../Header/Header';
-import Paragraph from '../Paragraph/Paragraph';
+import { Row } from '../Row';
+import { Col } from '../Col';
+import { Header } from '../Header';
+import { Paragraph } from '../Paragraph';
 import styles from './Form.module.css';
 
 interface Props {
@@ -13,13 +13,13 @@ interface Props {
   onSubmit?: React.FormEventHandler;
 }
 
-const Form = ({
+export const Form: React.FunctionComponent<Props> = ({
   children,
   title,
   error,
   narrow,
   onSubmit,
-}: Props): JSX.Element => (
+}) => (
   <form className={styles.root} onSubmit={onSubmit}>
     {Boolean(title) && (
       <Row marginBottom='l'>
@@ -38,5 +38,3 @@ const Form = ({
     {children}
   </form>
 );
-
-export default Form;

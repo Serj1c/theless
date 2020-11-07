@@ -1,8 +1,8 @@
 import React from 'react';
-import Row from '../Row/Row';
-import Col from '../Col/Col';
-import Text from '../Text/Text';
-import Paragraph from '../Paragraph/Paragraph';
+import { Row } from '../Row';
+import { Col } from '../Col';
+import { Text } from '../Text';
+import { Paragraph } from '../Paragraph';
 
 export interface Props {
   children: React.ReactNode;
@@ -12,13 +12,13 @@ export interface Props {
   center?: boolean;
 }
 
-const FormRow = ({
+export const FormRow: React.FunctionComponent<Props> = ({
   children,
   label,
   htmlFor,
   error,
   center,
-}: Props): JSX.Element => {
+}) => {
   const labelCols = label ? 4 : undefined;
   const contentCols = label ? 8 : 12;
 
@@ -31,6 +31,7 @@ const FormRow = ({
           </label>
         </Col>
       )}
+
       <Col cols={12} colsSM={contentCols}>
         {children}
         {/* Error text */}
@@ -49,9 +50,3 @@ const FormRow = ({
     </Row>
   );
 };
-
-FormRow.defaultProps = {
-  size: 'm',
-};
-
-export default FormRow;

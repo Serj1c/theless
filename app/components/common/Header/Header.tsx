@@ -8,7 +8,7 @@ interface Props {
   inverted?: boolean;
 }
 
-export const Header = ({ inverted }: Props): JSX.Element => (
+export const Header: React.FunctionComponent<Props> = ({ inverted }) => (
   <div className={styles.root}>
     <div className={styles.left}>
       <Menu />
@@ -21,5 +21,3 @@ export const Header = ({ inverted }: Props): JSX.Element => (
     </div>
   </div>
 );
-
-export default Header;

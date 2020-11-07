@@ -1,0 +1,7 @@
+.root {
+  display: grid;
+  gap: 24px;
+  grid-auto-flow: column;
+  grid-auto-columns: min-content;
+  align-items: center;
+}

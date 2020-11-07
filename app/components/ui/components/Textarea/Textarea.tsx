@@ -8,7 +8,11 @@ interface Props extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   size?: Size;
 }
 
-const Textarea = ({ size, autoFocus, ...restProps }: Props): JSX.Element => {
+export const Textarea: React.FunctionComponent<Props> = ({
+  size = 'm',
+  autoFocus,
+  ...restProps
+}) => {
   const ref = useRef<HTMLTextAreaElement>(null);
   const className = classNames(styles.root, styles[`root_size_${size}`]);
 
@@ -20,9 +24,3 @@ const Textarea = ({ size, autoFocus, ...restProps }: Props): JSX.Element => {
 
   return <textarea ref={ref} {...restProps} className={className} />;
 };
-
-Textarea.defaultProps = {
-  size: 'm',
-};
-
-export default Textarea;

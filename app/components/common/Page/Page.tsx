@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect } from 'react';
 import classNames from 'classnames';
-import { Loader, Container } from 'components/ui';
+import { Container, Loader } from 'components/ui';
 import styles from './Page.module.css';
 
 const handleResize = (): void => {
@@ -22,14 +22,14 @@ interface Props {
   topOffset?: boolean;
 }
 
-const Page = ({
+export const Page: React.FunctionComponent<Props> = ({
   header,
   footer,
   center,
   topOffset,
   loading,
   children,
-}: Props): JSX.Element => {
+}) => {
   useEffect((): (() => void) => {
     window.addEventListener('resize', handleResize);
 
@@ -57,5 +57,3 @@ const Page = ({
     </div>
   );
 };
-
-export default Page;

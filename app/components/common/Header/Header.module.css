@@ -22,6 +22,7 @@
 
 .center {
   justify-content: center;
+  line-height: 0;
 }
 
 .right {

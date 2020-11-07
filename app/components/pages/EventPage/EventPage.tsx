@@ -7,7 +7,7 @@ import {
   SubscriptionForm,
 } from 'components/common';
 import { EventModel } from 'models';
-import { Cover, Description, MapSection } from './components';
+import { Cover, Description, MapSection, Controls } from './components';
 
 interface Props {
   item?: EventModel;
@@ -20,6 +20,10 @@ export const EventPage = ({ item }: Props): JSX.Element => (
 
     {/* Headline section */}
     <PageHeader title={item.name} />
+
+    {/* Controls */}
+    {/* TODO Implement isFavorite */}
+    <Controls id={item.id} isFavorite={false} />
 
     {/* Description section*/}
     <Description item={item} />

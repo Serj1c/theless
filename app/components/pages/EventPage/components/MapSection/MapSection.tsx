@@ -6,12 +6,10 @@ interface Props {
   coordinates: [number, number];
 }
 
-const MapSection = ({ coordinates }: Props): JSX.Element => (
-  <Row margin='xl'>
+export const MapSection: React.FunctionComponent<Props> = ({ coordinates }) => (
+  <Row margin='xl' noGutter>
     <FullWidthCol>
       <Map coords={coordinates} />
     </FullWidthCol>
   </Row>
 );
-
-export default MapSection;

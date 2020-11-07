@@ -13,7 +13,10 @@ interface Props {
   };
 }
 
-const SubscriptionForm = ({ title, params = {} }: Props): JSX.Element => {
+export const SubscriptionForm: React.FunctionComponent<Props> = ({
+  title,
+  params = {},
+}) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const handleSubmit = useCallback(
@@ -64,5 +67,3 @@ const SubscriptionForm = ({ title, params = {} }: Props): JSX.Element => {
     </Row>
   );
 };
-
-export default SubscriptionForm;

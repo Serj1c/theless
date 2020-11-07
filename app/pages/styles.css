@@ -1,9 +1,44 @@
 * {
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', Helvetica, Arial, sans-serif;
   font-weight: 300;
 }
 
 body {
   margin: 0;
+}
+
+a {
+  text-decoration: none;
+  outline: none;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  outline: none;
+}
+
+:root {
+  /* Grid */
+  --step: 8px;
+
+  /* Paddings */
+  --padding_xs: calc(var(--step) / 2); /* 4px */
+  --padding_s: var(--step);
+  --padding_m: calc(var(--step) * 2); /* 16px */
+  --padding_l: calc(var(--step) * 3); /* 24px */
+  --padding_xl: calc(var(--step) * 4); /* 32px */
+
+  /* Other */
+  --border_radius: calc(var(--step) / 2); /* 4px */
+
+  /* Font: sizes */
+  --font_size_s: 13px;
+  --font_size_m: 16px;
+
+  /* Font: colors */
+  --font_color_main: #333;
+  --font_color_light: #fff;
 }

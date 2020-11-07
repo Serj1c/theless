@@ -1,17 +1,15 @@
 import React from 'react';
-import Row from '../Row/Row';
-import Col from '../Col/Col';
+import { Row } from '../Row';
+import { Col } from '../Col';
 
 export interface Props {
   children: React.ReactNode;
 }
 
-const FormAction = ({ children }: Props): JSX.Element => (
+export const FormAction: React.FunctionComponent<Props> = ({ children }) => (
   <Row>
     <Col cols={12} colsSM={8} offsetSM={4}>
       {children}
     </Col>
   </Row>
 );
-
-export default FormAction;

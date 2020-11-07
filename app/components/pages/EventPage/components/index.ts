@@ -1,3 +1,4 @@
-export { default as Cover } from './Cover/Cover';
-export { default as MapSection } from './MapSection/MapSection';
-export { default as Description } from './Description/Description';
+export { Controls } from './Controls';
+export { Cover } from './Cover';
+export { Description } from './Description';
+export { MapSection } from './MapSection';

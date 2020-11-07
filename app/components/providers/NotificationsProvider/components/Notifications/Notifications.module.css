@@ -1,0 +1,9 @@
+.root {
+  position: fixed;
+  left: 50%;
+  bottom: var(--step);
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: calc(100% - 4 * var(--step));
+  max-width: 500px;
+}

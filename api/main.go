@@ -5,6 +5,7 @@ import (
 	"github.com/go-chi/chi/middleware"
 	"github.com/varkadov/theless/api/routes/auth"
 	"github.com/varkadov/theless/api/routes/events"
+	"github.com/varkadov/theless/api/routes/favorites"
 	"github.com/varkadov/theless/api/routes/locations"
 	"log"
 	"net/http"
@@ -23,8 +24,9 @@ func main() {
 	r.Use(middleware.SetHeader("Content-Type", "application/json"))
 
 	r.Mount("/auth", auth.Router())
-	r.Mount("/locations", locations.Router())
 	r.Mount("/events", events.Router())
+	r.Mount("/favorites", favorites.Router())
+	r.Mount("/locations", locations.Router())
 
 	err := http.ListenAndServe(":"+port, r)
 

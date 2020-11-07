@@ -1,0 +1,28 @@
+/* Size modifiers */
+.root_size_s {
+  width: 14px;
+  height: 14px;
+}
+
+.root_size_m {
+  width: 20px;
+  height: 20px;
+}
+
+.root_size_l {
+  width: 30px;
+  height: 30px;
+}
+
+/* Type modifiers */
+.root_type_facebook {
+  color: #2f80ed;
+}
+
+.root_type_twitter {
+  color: #2d9cdb;
+}
+
+.root_type_heart {
+  color: #eb5757;
+}

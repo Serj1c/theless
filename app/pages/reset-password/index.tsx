@@ -8,7 +8,7 @@ const SignUpPage: NextPage = () => (
   <>
     {/* Render page meta */}
     <Head>
-      <title>{TITLE_PREFIX} Reset password</title>
+      <title>{TITLE_PREFIX}Сброс пароля</title>
     </Head>
 
     {/* Render page content */}

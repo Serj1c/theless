@@ -1,36 +1,76 @@
-import React, { memo } from 'react';
-import { Header, Paragraph, Link } from 'components/ui';
+import React, { useCallback } from 'react';
+import Link from 'next/link';
+import { Col, Header, Paragraph, Row } from 'components/ui';
 import { EventModel } from 'models/EventModel';
-import styles from './Item.module.css';
 import { formatDate } from 'utils/formatDate';
+import { Like } from './components';
+import styles from './Item.module.css';
 
 interface Props {
   item: EventModel;
 }
 
-const Item = ({ item }: Props): JSX.Element => (
-  <div className={styles.root}>
+export const Item: React.FunctionComponent<Props> = ({ item }) => {
+  /**
+   * Item click handler
+   */
+  const handleClick: React.MouseEventHandler<HTMLAnchorElement> = useCallback(
+    (event) => {
+      if (!(event.target instanceof Element)) {
+        return;
+      }
+
+      let element = event.target;
+
+      while (element !== event.currentTarget) {
+        // Don't go link if button of link was click in children tree
+        if (element.tagName === 'BUTTON') {
+          event.preventDefault();
+          break;
+        }
+
+        element = element.parentElement;
+      }
+    },
+    []
+  );
+
+  return (
     <Link
       href={`/[location]/events/[event]`}
       as={`/${item.location.slug}/events/${item.slug}`}
+      passHref
     >
-      <div
-        className={styles.cover}
-        style={{
-          backgroundImage: `url(${item.cover})`,
-        }}
-      />
-      <Header level={3} size='l'>
-        {item.name}
-      </Header>
+      <a className={styles.link} onClick={handleClick}>
+        {/* Cover */}
+        <div
+          className={styles.cover}
+          style={{
+            backgroundImage: `url(${item.cover})`,
+          }}
+        />
 
-      <Paragraph color='noaccent'>
-        {formatDate(item.dateStart, item.dateEnd)}
-      </Paragraph>
+        {/* Header and like button */}
+        <Row>
+          <Col cols={9}>
+            <Header level={3} size='l' margin='none'>
+              {item.name}
+            </Header>
+          </Col>
 
-      <Paragraph color='noaccent'>{item.address}</Paragraph>
+          {/* Add to favorite button */}
+          <Col align='right' cols={3}>
+            {/* TODO Implement isFavorite prop */}
+            <Like id={item.id} isFavorite={false} />
+          </Col>
+        </Row>
+
+        <Paragraph color='noaccent'>
+          {formatDate(item.dateStart, item.dateEnd)}
+        </Paragraph>
+
+        <Paragraph color='noaccent'>{item.address}</Paragraph>
+      </a>
     </Link>
-  </div>
-);
-
-export default memo(Item);
+  );
+};

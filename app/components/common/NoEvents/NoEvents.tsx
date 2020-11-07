@@ -1,10 +1,10 @@
 import React from 'react';
-import { Col, Row, Paragraph, Link } from 'components/ui';
+import { Col, Link, Paragraph, Row } from 'components/ui';
 
 // TODO Improvements
 // 1. Add link to the parent location
 
-const NoEvents = (): JSX.Element => (
+export const NoEvents: React.FunctionComponent = () => (
   <Row>
     <Col cols={12} align='center' marginBottom='xl'>
       <Paragraph size='l'>
@@ -18,5 +18,3 @@ const NoEvents = (): JSX.Element => (
     </Col>
   </Row>
 );
-
-export default NoEvents;

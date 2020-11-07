@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import classNames from 'classnames';
 import styles from './Text.module.css';
@@ -15,7 +14,12 @@ export interface Props extends WithoutClassname {
   size?: Size;
 }
 
-const Text = ({ color, size, children, ...props }: Props): JSX.Element => {
+export const Text: React.FunctionComponent<Props> = ({
+  color = 'default',
+  size = 'm',
+  children,
+  ...props
+}) => {
   const className = classNames(
     styles.root,
     styles[`root_color_${color}`],
@@ -28,10 +32,3 @@ const Text = ({ color, size, children, ...props }: Props): JSX.Element => {
     </span>
   );
 };
-
-Text.defaultProps = {
-  color: 'default',
-  size: 'm',
-};
-
-export default Text;

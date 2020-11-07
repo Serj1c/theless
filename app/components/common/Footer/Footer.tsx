@@ -1,27 +1,15 @@
-import React, { memo } from 'react';
+import React from 'react';
 import classNames from 'classnames';
-import { Container, Row, Col, Paragraph, Link } from 'components/ui';
+import { Col, Container, Link, Paragraph, Row } from 'components/ui';
+import { EMAIL } from 'constants/common';
+import { getYears } from './utils';
 import styles from './Footer.module.css';
-
-const EMAIL = 'info@theless.com';
-const START_YEAR = 2020;
-
-const getYears = (): string => {
-  const now = new Date();
-  const currentYear = now.getFullYear();
-
-  if (currentYear > START_YEAR) {
-    return `${START_YEAR}–${currentYear}`;
-  }
-
-  return String(START_YEAR);
-};
 
 interface Props {
   withPadding?: boolean;
 }
 
-const Footer = ({ withPadding }: Props) => {
+export const Footer: React.FunctionComponent<Props> = ({ withPadding }) => {
   const className = classNames(styles.root, {
     [styles['root_with-padding']]: withPadding,
   });
@@ -43,5 +31,3 @@ const Footer = ({ withPadding }: Props) => {
     </div>
   );
 };
-
-export default memo(Footer);

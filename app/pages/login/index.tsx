@@ -8,7 +8,7 @@ const LoginPage: NextPage = () => (
   <>
     {/* Render page meta */}
     <Head>
-      <title>{TITLE_PREFIX} Login</title>
+      <title>{TITLE_PREFIX}Вход</title>
     </Head>
 
     {/* Render page content */}

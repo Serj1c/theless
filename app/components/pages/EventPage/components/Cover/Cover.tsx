@@ -6,8 +6,8 @@ interface Props {
   img: string;
 }
 
-const Cover = ({ img }: Props): JSX.Element => (
-  <Row margin='none'>
+export const Cover: React.FunctionComponent<Props> = ({ img }) => (
+  <Row margin='none' noGutter>
     <FullWidthCol>
       <div className={styles.root}>
         <img className={styles.img} src={img} alt='' />
@@ -15,5 +15,3 @@ const Cover = ({ img }: Props): JSX.Element => (
     </FullWidthCol>
   </Row>
 );
-
-export default Cover;

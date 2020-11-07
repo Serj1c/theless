@@ -12,13 +12,13 @@ interface Props
   textAlign?: TextAlign;
 }
 
-const Input = ({
+export const Input: React.FunctionComponent<Props> = ({
   size = 'm',
   textAlign = 'left',
   rounded,
   autoFocus,
   ...restProps
-}: Props): JSX.Element => {
+}) => {
   const ref = useRef<HTMLInputElement>(null);
   const className = classNames(styles.root, styles[`root_size_${size}`], {
     [styles.root_rounded]: rounded,
@@ -33,5 +33,3 @@ const Input = ({
 
   return <input ref={ref} className={className} {...restProps} />;
 };
-
-export default Input;

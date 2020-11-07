@@ -1,29 +1,32 @@
 import React from 'react';
 import classNames from 'classnames';
-import styles from './Row.module.css';
 import marginsStyles from '../../common/margins.module.css';
-import { Margin, DEFAULT_MARGIN } from '../../common/margins';
+import { DEFAULT_MARGIN, Margin } from '../../common/margins';
+import styles from './Row.module.css';
 
 interface Props {
   children?: React.ReactNode;
   margin?: Margin;
   marginTop?: Margin;
   marginBottom?: Margin;
+  noGutter?: boolean;
 }
 
-const Row = ({
+export const Row: React.FunctionComponent<Props> = ({
   children,
   marginTop = DEFAULT_MARGIN,
   marginBottom = DEFAULT_MARGIN,
   margin,
-}: Props): JSX.Element => {
+  noGutter,
+}) => {
   const className = classNames(
     styles.root,
     marginsStyles[`top_${margin || marginTop}`],
-    marginsStyles[`bottom_${margin || marginBottom}`]
+    marginsStyles[`bottom_${margin || marginBottom}`],
+    {
+      [styles.root_noGutter]: noGutter,
+    }
   );
 
   return <div className={className}>{children}</div>;
 };
-
-export default Row;
