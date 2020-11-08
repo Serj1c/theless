@@ -1,4 +1,17 @@
 .root {
+  transform: translate3d(0, 0, 0);
+
+  /* Animation */
+  max-height: 0;
+  transition: max-height 0.3s ease-out;
+}
+
+.root_state_entered {
+  max-height: 100px;
+}
+
+/* Notification element */
+.notification {
   --padding: calc(2 * var(--step));
 
   display: flex;
@@ -7,6 +20,24 @@
   border-radius: var(--border_radius);
   background-color: rgba(0, 0, 0, 0.8);
   color: var(--font_color_light);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+
+  /* Animation */
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
+
+.notification_state_entered {
+  opacity: 1;
+}
+
+.notification_state_exiting,
+.root_state_exiting {
+  transition-timing-function: ease-in;
+}
+
+.notification_state_exiting {
+  transition-delay: 0.1s;
 }
 
 .row_first {

@@ -1,6 +1,10 @@
+/* tooltip element */
 .tooltip {
   --tooltip_background_color: rgba(0, 0, 0, 0.8);
   --tooltip_arrow_size: calc(var(--step) * 2);
+  --shift: 4px;
+  --animation-duration: 200ms;
+  --animation-timing-function: ease-out;
 
   background-color: var(--tooltip_background_color);
   padding: var(--padding_s) var(--padding_m);
@@ -8,8 +12,43 @@
   color: var(--font_color_light);
   font-size: var(--font_size_s);
   z-index: 1;
+
+  opacity: 0;
+  transition: margin var(--animation-duration) var(--animation-timing-function),
+    opacity var(--animation-duration) var(--animation-timing-function);
 }
 
+/* tooltip state modifier */
+.tooltip_state_entering {
+  margin-top: 0;
+  margin-left: 0;
+}
+
+.tooltip_state_entered {
+  opacity: 1;
+}
+
+[data-popper-placement^='top'].tooltip_state_entering,
+[data-popper-placement^='top'].tooltip_state_exiting {
+  margin-top: calc(-1 * var(--shift));
+}
+
+[data-popper-placement^='bottom'].tooltip_state_entering,
+[data-popper-placement^='bottom'].tooltip_state_exiting {
+  margin-top: var(--shift);
+}
+
+[data-popper-placement^='right'].tooltip_state_entering,
+[data-popper-placement^='right'].tooltip_state_exiting {
+  margin-left: var(--shift);
+}
+
+[data-popper-placement^='left'].tooltip_state_entering,
+[data-popper-placement^='left'].tooltip_state_exiting {
+  margin-left: calc(-1 * var(--shift));
+}
+
+/* arrow element */
 .arrow {
   position: absolute;
   width: var(--tooltip_arrow_size);

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Transition, TransitionGroup } from 'react-transition-group';
 import { Message } from '../../NotificationsProvider';
 import { Notification } from './components/Notification';
 import styles from './Notifications.module.css';
@@ -12,9 +13,13 @@ export const Notifications: React.FunctionComponent<Props> = ({
   messages,
   onClose,
 }) => (
-  <div className={styles.root}>
+  <TransitionGroup className={styles.root}>
     {messages.map((item) => (
-      <Notification key={item.id} message={item} onClose={onClose} />
+      <Transition timeout={300} key={item.id}>
+        {(state) => (
+          <Notification message={item} state={state} onClose={onClose} />
+        )}
+      </Transition>
     ))}
-  </div>
+  </TransitionGroup>
 );

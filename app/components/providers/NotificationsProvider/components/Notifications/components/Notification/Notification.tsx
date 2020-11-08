@@ -1,20 +1,31 @@
 import React, { useCallback, useEffect, useRef } from 'react';
+import classNames from 'classnames';
 import { Header, Paragraph } from 'components/ui';
 import { Icon } from 'components/common';
 import { Message } from 'components/providers';
 import styles from './Notification.module.css';
 
+type State = 'unmounted' | 'exited' | 'entering' | 'entered' | 'exiting';
+
 interface Props {
+  state?: State;
   message: Message;
   onClose: (message: Message) => void;
 }
 
 export const Notification: React.FunctionComponent<Props> = ({
+  state,
   message,
   onClose,
 }) => {
   const timerId = useRef<NodeJS.Timeout>();
   const { delay } = message;
+  const rootClassName = classNames(styles.root, {
+    [styles[`root_state_${state}`]]: state,
+  });
+  const notificationClassName = classNames(styles.notification, {
+    [styles[`notification_state_${state}`]]: state,
+  });
 
   /**
    * Mount / unmount
@@ -68,37 +79,39 @@ export const Notification: React.FunctionComponent<Props> = ({
   }, [onClose, message]);
 
   return (
-    <div
-      className={styles.root}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      <div className={styles.row_first}>
-        <div className={styles.contentWrapper}>
-          {/* Title */}
-          {message.title &&
-            (typeof message.title === 'string' ? (
-              <Header level={3} color='inverted'>
-                {message.title}
-              </Header>
+    <div className={rootClassName}>
+      <div
+        className={notificationClassName}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <div className={styles.row_first}>
+          <div className={styles.contentWrapper}>
+            {/* Title */}
+            {message.title &&
+              (typeof message.title === 'string' ? (
+                <Header level={3} color='inverted'>
+                  {message.title}
+                </Header>
+              ) : (
+                message.title
+              ))}
+
+            {/* Message */}
+            {typeof message.message === 'string' ? (
+              <Paragraph color='inverted'>{message.message}</Paragraph>
             ) : (
-              message.title
-            ))}
-
-          {/* Message */}
-          {typeof message.message === 'string' ? (
-            <Paragraph color='inverted'>{message.message}</Paragraph>
-          ) : (
-            message.message
-          )}
+              message.message
+            )}
+          </div>
         </div>
-      </div>
 
-      {/* Close button */}
-      <div className={styles.row_last}>
-        <button className={styles.close} onClick={closeHandler}>
-          <Icon type='close' />
-        </button>
+        {/* Close button */}
+        <div className={styles.row_last}>
+          <button className={styles.close} onClick={closeHandler}>
+            <Icon type='close' />
+          </button>
+        </div>
       </div>
     </div>
   );

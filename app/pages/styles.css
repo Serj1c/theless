@@ -4,6 +4,10 @@
   font-weight: 300;
 }
 
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
   margin: 0;
 }
@@ -13,11 +17,21 @@ a {
   outline: none;
 }
 
+a:active {
+  /* Fix color in Safari */
+  color: inherit;
+}
+
 button {
   border: none;
   cursor: pointer;
   background-color: transparent;
   outline: none;
+}
+
+button:active {
+  /* Fix color in Safari */
+  color: inherit;
 }
 
 :root {
