@@ -58,7 +58,7 @@ const FormComponent = ({
         </Form.Row>
         <Form.Row>
           <Button
-            design='danger'
+            design='primary'
             size='l'
             fullWidth
             type='submit'

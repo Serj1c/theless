@@ -1,15 +1,13 @@
 import React from 'react';
 import classNames from 'classnames';
 import { Loader } from '../Loader';
+import { ButtonDesign, ButtonSize } from '../../common';
+import designStyles from '../../styles/design.module.css';
 import styles from './Button.module.css';
 
-type Design = 'primary' | 'secondary' | 'danger' | 'default';
-
-type Size = 's' | 'm' | 'l';
-
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  design?: Design;
-  size?: Size;
+  design?: ButtonDesign;
+  size?: ButtonSize;
   rounded?: boolean;
   fullWidth?: boolean;
   icon?: React.ReactNode;
@@ -30,7 +28,7 @@ export const Button: React.FunctionComponent<Props> = ({
 }) => {
   const buttonClassName = classNames(
     styles.root,
-    styles[`root_design_${design}`],
+    designStyles[design],
     styles[`root_size_${size}`],
     {
       [styles.root_withIcon]: icon,

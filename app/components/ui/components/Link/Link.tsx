@@ -1,16 +1,16 @@
 import React from 'react';
 import classNames from 'classnames';
 import NextLink, { LinkProps } from 'next/link';
+import { ButtonDesign, ButtonSize } from '../../common';
+import designStyles from '../../styles/design.module.css';
 import styles from './Link.module.css';
 
-type Design = 'link' | 'primary' | 'secondary' | 'danger' | 'default';
 type Color = 'light' | 'dark';
-type Size = 's' | 'm' | 'l';
 
 // TODO Extends add Link attributes
 interface Props extends LinkProps {
-  design?: Design;
-  size?: Size;
+  design?: ButtonDesign;
+  size?: ButtonSize;
   color?: Color;
   rounded?: boolean;
   children: React.ReactNode;
@@ -27,7 +27,9 @@ export const Link: React.FunctionComponent<Props> = ({
   ...props
 }) => {
   const isButtonDesign = design !== 'link';
-  const className = classNames(styles.root, styles[`root_design_${design}`], {
+  const className = classNames(styles.root, {
+    [styles[`root_design_${design}`]]: !isButtonDesign,
+    [designStyles[design]]: isButtonDesign,
     [styles[`root_color_${color}`]]: color,
     [styles[`root_size_${size}`]]: size && isButtonDesign,
     [styles.root_rounded]: rounded && isButtonDesign,

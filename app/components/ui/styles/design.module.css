@@ -1,0 +1,94 @@
+.primary,
+.secondary,
+.caution,
+.default {
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: calc(var(--step) / 2);
+  color: var(--font_color_light);
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: box-shadow 0.2s, background-color 0.1s;
+  cursor: pointer;
+}
+
+.primary:active,
+.caution:active {
+  color: var(--font_color_light);
+}
+
+.secondary:active,
+.default:active {
+  color: var(--font_color_main);
+}
+
+.primary:focus,
+.secondary:focus,
+.caution:focus,
+.default:focus {
+  box-shadow: 0 2px 8px rgba(0, 156, 243, 0.7);
+}
+
+/* Primary */
+.primary {
+  background-color: var(--color_primary);
+}
+
+.primary:hover,
+.primary:active {
+  background-color: var(--color_primary_hover);
+}
+
+.primary:disabled {
+  background-color: var(--color_primary_disabled);
+  color: #e8f5fc;
+}
+
+/* Secondary */
+.secondary {
+  background-color: var(--color_secondary);
+  color: var(--font_color_main);
+}
+
+.secondary:hover,
+.secondary:active {
+  background-color: var(--color_secondary_hover);
+}
+
+.secondary:disabled {
+  background-color: var(--color_secondary_disabled);
+  color: #666;
+}
+
+/* Caution */
+.caution {
+  background-color: var(--color_caution);
+}
+
+.caution:hover,
+.caution:active {
+  background-color: var(--color_caution_hover);
+}
+
+.caution:disabled {
+  background-color: var(--color_caution_disabled);
+  color: #ffe6e6;
+}
+
+/* Default */
+.default {
+  background-color: var(--color_default);
+  border: 1px solid #ccc;
+  color: var(--font_color_main);
+}
+
+.default:hover,
+.default:active {
+  background-color: var(--color_default_hover);
+}
+
+.default:disabled {
+  background-color: var(--color_default_disabled);
+  color: #666;
+}

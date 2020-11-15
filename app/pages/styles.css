@@ -55,4 +55,21 @@ button:active {
   /* Font: colors */
   --font_color_main: #333;
   --font_color_light: #fff;
+
+  /* Controls: colors */
+  --color_primary: #009cf3;
+  --color_primary_hover: #0083cc;
+  --color_primary_disabled: #93d8ff;
+
+  --color_secondary: #ffd166;
+  --color_secondary_hover: #f8be3a;
+  --color_secondary_disabled: #fde09e;
+
+  --color_caution: #ff6163;
+  --color_caution_hover: #e82c2f;
+  --color_caution_disabled: #f8a2a3;
+
+  --color_default: #fff;
+  --color_default_hover: #f9f9f9;
+  --color_default_disabled: #f4f4f4;
 }

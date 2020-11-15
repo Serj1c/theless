@@ -6,6 +6,11 @@
   outline: none;
   appearance: none;
   box-sizing: border-box;
+  transition: box-shadow 0.2s;
+}
+
+.root:focus {
+  box-shadow: 0 2px 8px rgba(0, 156, 243, 0.7);
 }
 
 /* Size modifier */

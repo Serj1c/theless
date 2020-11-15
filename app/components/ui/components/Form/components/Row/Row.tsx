@@ -41,7 +41,7 @@ export const Row: React.FunctionComponent<Props> = ({
         {Boolean(error) && (
           <label htmlFor={htmlFor}>
             <Paragraph
-              color='danger'
+              color='caution'
               margin='none'
               align={center ? 'center' : 'left'}
             >

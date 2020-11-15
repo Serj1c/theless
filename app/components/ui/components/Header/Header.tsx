@@ -2,8 +2,8 @@ import React from 'react';
 import classNames from 'classnames';
 import { Margin } from '../../common/margins';
 import { Color, Size, Text } from '../Text/Text';
-import marginStyles from '../../common/margins.module.css';
-import lineHeightStyles from '../../common/line-heights.module.css';
+import marginStyles from '../../styles/margins.module.css';
+import lineHeightStyles from '../../styles/line-heights.module.css';
 import styles from './Header.module.css';
 
 export type Level = 1 | 2 | 3;

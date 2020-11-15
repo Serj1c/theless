@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import styles from './Text.module.css';
 
-export type Color = 'default' | 'noaccent' | 'inverted' | 'danger' | 'inherit';
+export type Color = 'default' | 'noaccent' | 'inverted' | 'caution' | 'inherit';
 export type Size = 'xxl' | 'xl' | 'l' | 'm' | 's' | 'xs' | 'xxs';
 
 type WithoutClassname = Omit<React.HTMLAttributes<HTMLElement>, 'className'>;

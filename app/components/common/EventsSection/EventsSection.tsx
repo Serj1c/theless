@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Header } from 'components/ui';
 import { EventModel } from 'models/EventModel';
-import { Item } from './components/Item/Item';
+import { Item } from './components/Item';
 
 type Period = 'week' | 'month' | 'all';
 
