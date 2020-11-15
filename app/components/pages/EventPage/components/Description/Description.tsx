@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Link, Paragraph, Row } from 'components/ui';
+import { Grid, Link, Paragraph } from 'components/ui';
 import { formatDate } from 'utils/formatDate';
 import { EventModel } from 'models';
 
@@ -8,8 +8,8 @@ interface Props {
 }
 
 export const Description: React.FunctionComponent<Props> = ({ item }) => (
-  <Row>
-    <Col cols={12} colsLG={8}>
+  <Grid.Row>
+    <Grid.Col cols={12} colsLG={8}>
       <Paragraph marginTop='none' size='l' color='noaccent'>
         {formatDate(item.dateStart, item.dateEnd)}
       </Paragraph>
@@ -32,6 +32,6 @@ export const Description: React.FunctionComponent<Props> = ({ item }) => (
           {item.description}
         </Paragraph>
       )}
-    </Col>
-  </Row>
+    </Grid.Col>
+  </Grid.Row>
 );

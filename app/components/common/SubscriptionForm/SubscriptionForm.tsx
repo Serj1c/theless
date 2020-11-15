@@ -1,5 +1,5 @@
 import React, { useCallback, useReducer } from 'react';
-import { Col, Row } from 'components/ui';
+import { Grid } from 'components/ui';
 import { ERROR_MESSAGE_OTHER } from 'constants/errors';
 import { axios, isAxiosError } from 'utils';
 import Form, { OnSubmitParams } from './components/Form/Form';
@@ -50,8 +50,8 @@ export const SubscriptionForm: React.FunctionComponent<Props> = ({
   );
 
   return (
-    <Row marginTop='xl' marginBottom='xxl'>
-      <Col align='center'>
+    <Grid.Row marginTop='xl' marginBottom='xxl'>
+      <Grid.Col align='center'>
         {state.isSubmitted ? (
           <Success />
         ) : (
@@ -63,7 +63,7 @@ export const SubscriptionForm: React.FunctionComponent<Props> = ({
             onSubmit={handleSubmit}
           />
         )}
-      </Col>
-    </Row>
+      </Grid.Col>
+    </Grid.Row>
   );
 };

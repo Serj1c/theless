@@ -1,6 +1,6 @@
 import React, { useCallback, useReducer } from 'react';
 import { Footer, Header, Page } from 'components/common';
-import { Col, Row } from 'components/ui';
+import { Grid } from 'components/ui';
 import { ERROR_MESSAGE_OTHER } from 'constants/errors';
 import { axios, isAxiosError } from 'utils';
 import Form from './components/NewEventForm/NewEventForm';
@@ -77,8 +77,8 @@ export const AddEventPage = (): JSX.Element => {
       header={<Header />}
       footer={<Footer />}
     >
-      <Row>
-        <Col align={state.isFetched ? 'center' : 'left'}>
+      <Grid.Row>
+        <Grid.Col align={state.isFetched ? 'center' : 'left'}>
           {state.isFetched ? (
             <Success />
           ) : (
@@ -91,8 +91,8 @@ export const AddEventPage = (): JSX.Element => {
               onSubmit={handleSubmit}
             />
           )}
-        </Col>
-      </Row>
+        </Grid.Col>
+      </Grid.Row>
     </Page>
   );
 };

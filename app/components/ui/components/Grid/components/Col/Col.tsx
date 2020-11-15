@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Margin } from '../../common/margins';
-import marginsStyles from '../../common/margins.module.css';
+import { Margin } from '../../../../common/margins';
+import marginsStyles from '../../../../common/margins.module.css';
 import styles from './Col.module.css';
 
 type cols = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;

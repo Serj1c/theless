@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormRow, Input, Textarea } from 'components/ui';
+import { Form, Input, Textarea } from 'components/ui';
 
 interface Props {
   label: string;
@@ -22,7 +22,7 @@ const Row = ({
   autoFocus,
   onChange,
 }: Props): JSX.Element => (
-  <FormRow htmlFor={name} label={label} error={error}>
+  <Form.Row htmlFor={name} label={label} error={error}>
     {TEXTAREA_FIELDS.includes(name) ? (
       <Textarea
         id={name}
@@ -45,7 +45,7 @@ const Row = ({
         onChange={onChange}
       />
     )}
-  </FormRow>
+  </Form.Row>
 );
 
 export default Row;

@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import { Col, Header, Row } from 'components/ui';
+import { Grid, Header } from 'components/ui';
 import { TITLE_PREFIX } from 'constants/common';
 
 interface Props {
@@ -18,10 +18,10 @@ export const PageHeader: React.FunctionComponent<Props> = ({ title }) => (
     </Head>
 
     {/* Render page header */}
-    <Row margin='none'>
-      <Col>
+    <Grid.Row margin='none'>
+      <Grid.Col>
         <Header level={1}>{title}</Header>
-      </Col>
-    </Row>
+      </Grid.Col>
+    </Grid.Row>
   </>
 );

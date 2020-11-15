@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form, FormAction } from 'components/ui';
+import { Button, Form } from 'components/ui';
 import InputRow from './components/Row/Row';
 
 interface Fields {
@@ -61,11 +61,11 @@ const NewEventForm = ({
           onChange={onChange}
         />
       ))}
-      <FormAction>
+      <Form.ActionRow>
         <Button type='submit' loading={isFetching} design='primary'>
           Добавить
         </Button>
-      </FormAction>
+      </Form.ActionRow>
     </Form>
   );
 };

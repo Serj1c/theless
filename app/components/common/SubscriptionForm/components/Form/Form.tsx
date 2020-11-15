@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { Button, Form, FormRow, Input } from 'components/ui';
+import { Button, Form, Input } from 'components/ui';
 import styles from './Form.module.css';
 
 interface Props {
@@ -46,7 +46,7 @@ const FormComponent = ({
   return (
     <Form error={error} narrow title={title} onSubmit={handleSubmit}>
       <div className={styles.inputs}>
-        <FormRow error={errors && errors.email} center>
+        <Form.Row error={errors && errors.email} center>
           <Input
             size='l'
             textAlign='center'
@@ -55,8 +55,8 @@ const FormComponent = ({
             disabled={isFetching}
             onChange={handleChange}
           />
-        </FormRow>
-        <FormRow>
+        </Form.Row>
+        <Form.Row>
           <Button
             design='danger'
             size='l'
@@ -66,7 +66,7 @@ const FormComponent = ({
           >
             Подписаться
           </Button>
-        </FormRow>
+        </Form.Row>
       </div>
     </Form>
   );

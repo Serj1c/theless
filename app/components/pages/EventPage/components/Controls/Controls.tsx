@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { Col, Row } from 'components/ui';
+import { Grid } from 'components/ui';
 import { useFavorites } from 'hooks/useFavorites';
 import { Like, Share } from './components';
 import styles from './Controls.module.css';
@@ -26,13 +26,13 @@ export const Controls: React.FunctionComponent<Props> = (props) => {
   }, [toggleFavorite]);
 
   return (
-    <Row>
-      <Col>
+    <Grid.Row>
+      <Grid.Col>
         <div className={styles.root}>
           <Like isLiked={isFavorite} onLike={handleLike} />
           <Share isLiked={isFavorite} />
         </div>
-      </Col>
-    </Row>
+      </Grid.Col>
+    </Grid.Row>
   );
 };

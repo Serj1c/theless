@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Col, Row } from 'components/ui';
+import { Grid } from 'components/ui';
 import { EventModel } from 'models/EventModel';
 import { EventsSection } from 'components/common/EventsSection';
 import { filterEvents } from './utils/filterEvents';
@@ -19,8 +19,8 @@ export const Overview: React.FunctionComponent<Props> = ({ list }) => {
       : undefined;
 
   return (
-    <Row>
-      <Col>
+    <Grid.Row>
+      <Grid.Col>
         {/* This week events section */}
         {thisWeekEvents.length > 0 && (
           <EventsSection
@@ -50,7 +50,7 @@ export const Overview: React.FunctionComponent<Props> = ({ list }) => {
             itemCount={list.length}
           />
         )}
-      </Col>
-    </Row>
+      </Grid.Col>
+    </Grid.Row>
   );
 };

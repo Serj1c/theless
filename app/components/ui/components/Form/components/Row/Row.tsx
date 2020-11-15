@@ -1,8 +1,8 @@
-import React from 'react';
-import { Row } from '../Row';
-import { Col } from '../Col';
-import { Text } from '../Text';
-import { Paragraph } from '../Paragraph';
+import React, { useContext } from 'react';
+import { Grid } from '../../../Grid';
+import { Text } from '../../../Text';
+import { Paragraph } from '../../../Paragraph';
+import { context } from '../../Form';
 
 export interface Props {
   children: React.ReactNode;
@@ -12,28 +12,31 @@ export interface Props {
   center?: boolean;
 }
 
-export const FormRow: React.FunctionComponent<Props> = ({
+export const Row: React.FunctionComponent<Props> = ({
   children,
   label,
   htmlFor,
   error,
   center,
 }) => {
-  const labelCols = label ? 4 : undefined;
-  const contentCols = label ? 8 : 12;
+  const { narrow } = useContext(context);
+  const cols = 12;
+  const labelCols = narrow ? 12 : label ? 4 : undefined;
+  const contentCols = narrow ? 12 : label ? 8 : 12;
 
   return (
-    <Row>
+    <Grid.Row>
       {Boolean(label) && (
-        <Col cols={12} colsSM={labelCols} marginBottom='s'>
+        <Grid.Col cols={cols} colsSM={labelCols} marginBottom='s'>
           <label htmlFor={htmlFor}>
             <Text>{label}</Text>
           </label>
-        </Col>
+        </Grid.Col>
       )}
 
-      <Col cols={12} colsSM={contentCols}>
+      <Grid.Col cols={cols} colsSM={contentCols}>
         {children}
+
         {/* Error text */}
         {Boolean(error) && (
           <label htmlFor={htmlFor}>
@@ -46,7 +49,7 @@ export const FormRow: React.FunctionComponent<Props> = ({
             </Paragraph>
           </label>
         )}
-      </Col>
-    </Row>
+      </Grid.Col>
+    </Grid.Row>
   );
 };

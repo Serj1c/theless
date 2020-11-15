@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
-import marginsStyles from '../../common/margins.module.css';
-import { DEFAULT_MARGIN, Margin } from '../../common/margins';
+import marginsStyles from '../../../../common/margins.module.css';
+import { DEFAULT_MARGIN, Margin } from '../../../../common/margins';
 import styles from './Row.module.css';
 
 interface Props {

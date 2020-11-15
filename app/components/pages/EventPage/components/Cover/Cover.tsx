@@ -1,5 +1,5 @@
 import React from 'react';
-import { FullWidthCol, Row } from 'components/ui';
+import { FullWidthCol, Grid } from 'components/ui';
 import styles from './Cover.module.css';
 
 interface Props {
@@ -7,11 +7,11 @@ interface Props {
 }
 
 export const Cover: React.FunctionComponent<Props> = ({ img }) => (
-  <Row margin='none' noGutter>
+  <Grid.Row margin='none' noGutter>
     <FullWidthCol>
       <div className={styles.root}>
         <img className={styles.img} src={img} alt='' />
       </div>
     </FullWidthCol>
-  </Row>
+  </Grid.Row>
 );

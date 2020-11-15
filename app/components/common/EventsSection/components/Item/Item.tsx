@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import Link from 'next/link';
-import { Col, Header, Paragraph, Row } from 'components/ui';
+import { Grid, Header, Paragraph } from 'components/ui';
 import { EventModel } from 'models/EventModel';
 import { formatDate } from 'utils/formatDate';
 import { Like } from './components';
@@ -51,19 +51,19 @@ export const Item: React.FunctionComponent<Props> = ({ item }) => {
         />
 
         {/* Header and like button */}
-        <Row>
-          <Col cols={9}>
+        <Grid.Row>
+          <Grid.Col cols={9}>
             <Header level={3} size='l' margin='none'>
               {item.name}
             </Header>
-          </Col>
+          </Grid.Col>
 
           {/* Add to favorite button */}
-          <Col align='right' cols={3}>
+          <Grid.Col align='right' cols={3}>
             {/* TODO Implement isFavorite prop */}
             <Like id={item.id} isFavorite={false} />
-          </Col>
-        </Row>
+          </Grid.Col>
+        </Grid.Row>
 
         <Paragraph color='noaccent'>
           {formatDate(item.dateStart, item.dateEnd)}
