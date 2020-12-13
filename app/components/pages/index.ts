@@ -1,6 +1,11 @@
 export { AddEventPage } from './AddEventPage/AddEventPage';
+export { BlogPage } from './BlogPage';
 export { EventPage } from './EventPage/EventPage';
 export { EventsPage } from './EventsPage/EventsPage';
-export { LoginPage } from './LoginPage/LoginPage';
+export { LearningPage } from './LearningPage';
+export { LoginPage } from './LoginPage';
+export { PlacesPage } from './PlacesPage';
 export { ResetPassword } from './ResetPassword/ResetPassword';
+export { ShopPage } from './ShopPage';
 export { SignUpPage } from './SignUpPage/SignUpPage';
+export { ToursPage } from './ToursPage';

@@ -5,6 +5,6 @@ import (
 	"net/http"
 )
 
-func resetPassword(w http.ResponseWriter, _ *http.Request) {
+func (router *Router) resetPassword(w http.ResponseWriter, _ *http.Request) {
 	_, _ = fmt.Fprintf(w, "Reset password endpoint")
 }

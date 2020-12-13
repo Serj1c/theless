@@ -1,9 +1,10 @@
 package events
 
 import (
+	"github.com/globalsign/mgo/bson"
 	"github.com/go-chi/chi"
+	"github.com/varkadov/theless/api/store"
 	"gopkg.in/go-playground/validator.v9"
-	"gopkg.in/mgo.v2/bson"
 	"time"
 )
 
@@ -19,6 +20,7 @@ type EventItem struct {
 	DateEnd     time.Time     `json:"dateEnd" bson:"dateEnd"`
 	Cover       string        `json:"cover" bson:"cover"`
 	Link        string        `json:"link" bson:"link"`
+	IsFavorite  bool          `json:"isFavorite" bson:"isFavorite"`
 }
 
 type Location struct {
@@ -28,12 +30,23 @@ type Location struct {
 
 var validate *validator.Validate
 
-func Router() chi.Router {
+type Router struct {
+	db *store.Store
+}
+
+// New create new events router
+func New(db *store.Store) *Router {
+	return &Router{
+		db: db,
+	}
+}
+
+func (router *Router) Router() chi.Router {
 	r := chi.NewRouter()
 
-	r.Get("/", getList)
-	r.Post("/", add)
-	r.Post("/subscribe", subscribe)
+	r.Get("/", router.getList)
+	r.Post("/", router.add)
+	r.Post("/subscribe", router.subscribe)
 
 	return r
 }

@@ -32,12 +32,18 @@ const EventPageComponent: NextPage<Props> = ({ item, error }) => {
  */
 export const getServerSideProps: GetServerSideProps<Props, Params> = async ({
   params,
+  req,
 }) => {
   const { event, location } = params;
 
   try {
     const { data } = await axios.get<EventModel>(
-      `/locations/${location}/events/${event}`
+      `/locations/${location}/events/${event}`,
+      {
+        headers: {
+          Cookie: req.headers.cookie || '',
+        },
+      }
     );
 
     return {

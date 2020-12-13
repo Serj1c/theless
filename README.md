@@ -31,7 +31,7 @@
 
 1. `cd /usr/src/theless`;
 2. `git pull`;
-3. `docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d`.
+3. `docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build`.
 
 ### Update LetsEncrypt certificates
 

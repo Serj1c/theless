@@ -1,15 +1,19 @@
-import { LocationModel } from './location';
+interface Location {
+  name: string;
+  slug: string;
+}
 
 export interface EventModel {
   id: string;
   slug: string;
-  location: LocationModel;
+  location: Location;
   link?: string;
   name: string;
-  dateStart: number;
-  dateEnd: number;
+  dateStart: string;
+  dateEnd: string;
   address: string;
   cover: string;
   description?: string;
   coordinates?: [number, number];
+  isFavorite?: boolean;
 }

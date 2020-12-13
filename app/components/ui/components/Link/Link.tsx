@@ -13,6 +13,7 @@ interface Props extends LinkProps {
   size?: ButtonSize;
   color?: Color;
   rounded?: boolean;
+  underline?: boolean;
   children: React.ReactNode;
   target?: string;
 }
@@ -22,6 +23,7 @@ export const Link: React.FunctionComponent<Props> = ({
   color,
   rounded,
   size = 'm',
+  underline = true,
   href,
   as,
   ...props
@@ -30,6 +32,7 @@ export const Link: React.FunctionComponent<Props> = ({
   const className = classNames(styles.root, {
     [styles[`root_design_${design}`]]: !isButtonDesign,
     [designStyles[design]]: isButtonDesign,
+    [styles[`root_underlined`]]: !isButtonDesign && underline,
     [styles[`root_color_${color}`]]: color,
     [styles[`root_size_${size}`]]: size && isButtonDesign,
     [styles.root_rounded]: rounded && isButtonDesign,

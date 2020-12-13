@@ -1,23 +1,13 @@
 .root {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  color: #333;
-  cursor: pointer;
-  transition: background-color 200ms;
+  padding: var(--padding_xs);
+  color: var(--font_color_main);
+  transition: color var(--transition_color);
 }
 
 .root:hover {
-  background-color: #e5f6ff;
+  color: var(--font_color_accent);
 }
 
 .root_inverted {
-  color: #fff;
-}
-
-.root_inverted:hover {
-  background-color: rgba(255, 255, 255, 0.5);
+  color: var(--font_color_light);
 }

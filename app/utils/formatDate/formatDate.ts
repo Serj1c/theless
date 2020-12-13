@@ -1,7 +1,7 @@
 import moment from 'moment';
 import 'moment/locale/ru';
 
-export const formatDate = (start: number, end: number): string => {
+export const formatDate = (start: string, end: string): string => {
   const now = moment.utc();
   const tomorrow = moment(now).add(1, 'days');
 

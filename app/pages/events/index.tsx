@@ -27,9 +27,15 @@ const EventPageComponent: NextPage<Props> = ({ list, error }) => {
 /**
  * SSR initialisation
  */
-export const getServerSideProps: GetServerSideProps<Props> = async () => {
+export const getServerSideProps: GetServerSideProps<Props> = async ({
+  req,
+}) => {
   try {
-    const { data } = await axios.get<EventModel[]>('/events');
+    const { data } = await axios.get<EventModel[]>('/events', {
+      headers: {
+        Cookie: req.headers.cookie || '',
+      },
+    });
 
     return {
       props: {

@@ -3,11 +3,11 @@
 }
 
 .logo {
-  fill: #000;
   width: 100px;
   height: 40px;
+  color: var(--font_color_main);
 }
 
 .logo_inverted {
-  fill: #fff;
+  color: var(--font_color_light);
 }

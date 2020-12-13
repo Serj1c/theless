@@ -3,13 +3,13 @@ package locations
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/globalsign/mgo/bson"
 	"github.com/varkadov/theless/api/config"
-	"gopkg.in/mgo.v2/bson"
 	"net/http"
 )
 
 // getCurrent return current user position
-func getCurrent(w http.ResponseWriter, r *http.Request) {
+func (router *Router) getCurrent(w http.ResponseWriter, _ *http.Request) {
 	location := Location{}
 
 	err := config.LocationsCollection.Find(bson.M{}).One(&location)

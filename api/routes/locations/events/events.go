@@ -1,8 +1,9 @@
 package events
 
 import (
+	"github.com/globalsign/mgo/bson"
 	"github.com/go-chi/chi"
-	"gopkg.in/mgo.v2/bson"
+	"github.com/varkadov/theless/api/store"
 	"time"
 )
 
@@ -23,12 +24,23 @@ type EventItem struct {
 	DateEnd     time.Time     `json:"dateEnd" bson:"dateEnd"`
 	Cover       string        `json:"cover" bson:"cover"`
 	Link        string        `json:"link" bson:"link"`
+	IsFavorite  bool          `json:"isFavorite" bson:"isFavorite"`
 }
 
-func Router() chi.Router {
+type Router struct {
+	db *store.Store
+}
+
+func New(db *store.Store) *Router {
+	return &Router{
+		db: db,
+	}
+}
+
+func (router *Router) Router() chi.Router {
 	r := chi.NewRouter()
 
-	r.Get("/{eventSlug}", getItem)
+	r.Get("/{eventSlug}", router.getItem)
 
 	return r
 }

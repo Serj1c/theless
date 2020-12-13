@@ -10,8 +10,8 @@ interface Props {
   inverted?: boolean;
 }
 
-export const Login = ({ inverted }: Props): JSX.Element => {
-  const { user, setUser } = useUser();
+export const Login: React.FunctionComponent<Props> = ({ inverted }) => {
+  const { user } = useUser();
 
   const className = classNames(styles.root, {
     [styles.root_inverted]: inverted,

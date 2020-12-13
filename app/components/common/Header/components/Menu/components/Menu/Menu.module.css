@@ -1,0 +1,91 @@
+.root {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  overflow-y: scroll;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+
+.listWrapper {
+  max-height: 100%;
+}
+
+.listWrapper::after,
+.listWrapper::before {
+  content: '';
+  display: block;
+}
+
+.listWrapper::before {
+  height: 32px;
+}
+
+.listWrapper::after {
+  height: 72px;
+}
+
+.list {
+  display: grid;
+  grid-gap: var(--padding_xl);
+  align-content: center;
+  list-style: none;
+  text-align: center;
+  margin: 0;
+  padding: 0 32px;
+}
+
+.closeWrapper {
+  position: fixed;
+  top: auto;
+  bottom: 0;
+  height: 72px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* NOTE Setting up left, right and background-color to overlay list */
+  left: 32px;
+  right: 32px;
+  background-color: #fff;
+}
+
+.close {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close:hover {
+  color: var(--font_color_accent);
+}
+
+.divider {
+  width: 30px;
+  height: 2px;
+  background-color: #000;
+  border-radius: 1px;
+  border: none;
+}
+
+@media (min-width: 768px) {
+  .listWrapper::before {
+    height: 72px;
+  }
+
+  .listWrapper::after {
+    height: 32px;
+  }
+
+  .closeWrapper {
+    top: 0;
+    bottom: auto;
+  }
+}

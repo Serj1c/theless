@@ -31,11 +31,7 @@
 /* Design modifier */
 .root_design_link {
   color: #3677c2;
-}
-
-.root_design_link.root_color_light,
-.root_design_link.root_color_dark {
-  text-decoration: underline;
+  transition: color var(--transition_color);
 }
 
 .root_design_link.root_color_light {
@@ -44,6 +40,17 @@
 
 .root_design_link.root_color_dark {
   color: var(--font_color_main);
+}
+
+.root_design_link:hover,
+.root_design_link.root_color_light:hover,
+.root_design_link.root_color_dark:hover {
+  color: var(--font_color_accent);
+}
+
+/* Underline modifier */
+.root_underlined {
+  text-decoration: underline;
 }
 
 /* Fullwidth modifier */

@@ -45,6 +45,9 @@ button:active {
   --padding_l: calc(var(--step) * 3); /* 24px */
   --padding_xl: calc(var(--step) * 4); /* 32px */
 
+  /* Transitions */
+  --transition_color: 200ms;
+
   /* Other */
   --border_radius: calc(var(--step) / 2); /* 4px */
 
@@ -55,6 +58,7 @@ button:active {
   /* Font: colors */
   --font_color_main: #333;
   --font_color_light: #fff;
+  --font_color_accent: #f41224;
 
   /* Controls: colors */
   --color_primary: #009cf3;

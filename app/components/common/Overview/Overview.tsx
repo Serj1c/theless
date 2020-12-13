@@ -23,32 +23,17 @@ export const Overview: React.FunctionComponent<Props> = ({ list }) => {
       <Grid.Col>
         {/* This week events section */}
         {thisWeekEvents.length > 0 && (
-          <EventsSection
-            list={thisWeekEvents}
-            title='На этой неделе'
-            period='week'
-            itemCount={thisWeekEvents.length}
-          />
+          <EventsSection list={thisWeekEvents} title='На этой неделе' />
         )}
 
         {/* This month events section */}
         {thisMonthEvents.length > 0 && (
-          <EventsSection
-            list={thisMonthEvents}
-            title='В этом месяце'
-            period='month'
-            itemCount={thisMonthEvents.length + thisMonthEvents.length}
-          />
+          <EventsSection list={thisMonthEvents} title='В этом месяце' />
         )}
 
         {/* The rest of the events */}
         {restEvents.length > 0 && (
-          <EventsSection
-            list={restEvents}
-            title={title}
-            period='all'
-            itemCount={list.length}
-          />
+          <EventsSection list={restEvents} title={title} />
         )}
       </Grid.Col>
     </Grid.Row>

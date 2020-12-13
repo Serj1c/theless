@@ -23,7 +23,7 @@ export const EventPage = ({ item }: Props): JSX.Element => (
 
     {/* Controls */}
     {/* TODO Implement isFavorite */}
-    <Controls id={item.id} isFavorite={false} />
+    <Controls id={item.id} isFavorite={item.isFavorite} />
 
     {/* Description section*/}
     <Description item={item} />

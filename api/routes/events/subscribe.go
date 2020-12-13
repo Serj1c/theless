@@ -3,10 +3,10 @@ package events
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/globalsign/mgo/bson"
 	"github.com/varkadov/theless/api/config"
 	"github.com/varkadov/theless/api/libs/slack"
 	"gopkg.in/go-playground/validator.v9"
-	"gopkg.in/mgo.v2/bson"
 	"net/http"
 	"os"
 	"time"
@@ -24,7 +24,7 @@ type Doc struct {
 	Date    time.Time `bson:"date"`
 }
 
-func subscribe(w http.ResponseWriter, r *http.Request) {
+func (router *Router) subscribe(w http.ResponseWriter, r *http.Request) {
 	payload := subscribePayload{}
 
 	err := json.NewDecoder(r.Body).Decode(&payload)

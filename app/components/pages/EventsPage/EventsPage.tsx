@@ -18,7 +18,7 @@ interface Props {
 export const EventsPage = ({ list, title }: Props): JSX.Element => (
   <Page topOffset header={<Header />} footer={<Footer />}>
     {/* Page header */}
-    <PageHeader title={title} />
+    <PageHeader title={title} align='center' />
 
     {list.length === 0 ? (
       <NoEvents />

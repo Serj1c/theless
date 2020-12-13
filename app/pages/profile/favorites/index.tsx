@@ -1,19 +1,42 @@
 import React from 'react';
-import { NextPage } from 'next';
-import Head from 'next/head';
-import { TITLE_PREFIX } from 'constants/common';
+import { GetServerSideProps, NextPage } from 'next';
 import { Favorite } from 'components/pages/profile';
+import { axios } from 'utils';
+import { FavoriteModel } from 'models';
 
-const FavoritePage: NextPage = () => (
-  <>
-    {/* Render page meta */}
-    <Head>
-      <title>{TITLE_PREFIX}Избранное</title>
-    </Head>
+interface Props {
+  list?: FavoriteModel[];
+}
 
-    {/* Render page content */}
-    <Favorite />
-  </>
-);
+const FavoritePage: NextPage<Props> = ({ list }) => <Favorite list={list} />;
+
+/**
+ * SSR initialisation
+ */
+export const getServerSideProps: GetServerSideProps<Props> = async ({
+  req,
+}) => {
+  try {
+    const { data = [] } = await axios.get<FavoriteModel[]>('/favorites', {
+      headers: {
+        Cookie: req.headers.cookie || '',
+      },
+    });
+
+    return {
+      props: {
+        list: data,
+      },
+    };
+  } catch (_) {
+    // TODO Log into Sentry
+    // TODO Implement error handling
+    return {
+      props: {
+        list: [],
+      },
+    };
+  }
+};
 
 export default FavoritePage;

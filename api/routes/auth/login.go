@@ -16,7 +16,7 @@ type loginResponse struct {
 	Message string `json:"message,omitempty"`
 }
 
-func login(w http.ResponseWriter, r *http.Request) {
+func (router *Router) login(w http.ResponseWriter, r *http.Request) {
 	payload := loginPayload{}
 
 	err := json.NewDecoder(r.Body).Decode(&payload)

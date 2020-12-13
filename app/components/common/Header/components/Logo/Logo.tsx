@@ -13,6 +13,7 @@ interface Props {
 
 export const Logo = ({ inverted }: Props): JSX.Element => {
   const { pathname } = useRouter();
+
   const logoClassName = classNames(styles.logo, {
     [styles.logo_inverted]: inverted,
   });

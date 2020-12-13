@@ -3,13 +3,9 @@ import { Grid, Header } from 'components/ui';
 import { EventModel } from 'models/EventModel';
 import { Item } from './components/Item';
 
-type Period = 'week' | 'month' | 'all';
-
 interface Props {
   list: EventModel[];
-  period?: Period;
   title?: string;
-  itemCount: number;
 }
 
 export const EventsSection: React.FunctionComponent<Props> = ({

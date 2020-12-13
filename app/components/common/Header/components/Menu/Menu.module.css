@@ -1,0 +1,14 @@
+/* TODO Merge styles with Login component */
+.root {
+  padding: var(--padding_xs);
+  color: var(--font_color_main);
+  transition: color var(--transition_color);
+}
+
+.root:hover {
+  color: var(--font_color_accent);
+}
+
+.root_inverted {
+  color: var(--font_color_light);
+}

@@ -1,3 +1,8 @@
 import React from 'react';
+import { Footer, Header, Page, PageHeader } from 'components/common';
 
-export const ResetPassword = (): JSX.Element => <h1>Reset password page</h1>;
+export const ResetPassword: React.FunctionComponent = () => (
+  <Page topOffset header={<Header />} footer={<Footer />}>
+    <PageHeader title='Вход' align='center' />
+  </Page>
+);

@@ -4,10 +4,14 @@ import { Grid, Header } from 'components/ui';
 import { TITLE_PREFIX } from 'constants/common';
 
 interface Props {
+  align?: 'left' | 'center';
   title: string;
 }
 
-export const PageHeader: React.FunctionComponent<Props> = ({ title }) => (
+export const PageHeader: React.FunctionComponent<Props> = ({
+  align = 'left',
+  title,
+}) => (
   <>
     {/* Render page meta */}
     <Head>
@@ -19,7 +23,7 @@ export const PageHeader: React.FunctionComponent<Props> = ({ title }) => (
 
     {/* Render page header */}
     <Grid.Row margin='none'>
-      <Grid.Col>
+      <Grid.Col align={align}>
         <Header level={1}>{title}</Header>
       </Grid.Col>
     </Grid.Row>

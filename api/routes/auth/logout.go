@@ -5,6 +5,6 @@ import (
 	"net/http"
 )
 
-func logout(w http.ResponseWriter, _ *http.Request) {
+func (router *Router) logout(w http.ResponseWriter, _ *http.Request) {
 	_, _ = fmt.Fprintf(w, "Logout endpoint")
 }

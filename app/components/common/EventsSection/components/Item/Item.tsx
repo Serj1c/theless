@@ -60,8 +60,7 @@ export const Item: React.FunctionComponent<Props> = ({ item }) => {
 
           {/* Add to favorite button */}
           <Grid.Col align='right' cols={3}>
-            {/* TODO Implement isFavorite prop */}
-            <Like id={item.id} isFavorite={false} />
+            <Like id={item.id} isFavorite={item.isFavorite} />
           </Grid.Col>
         </Grid.Row>
 

@@ -5,6 +5,6 @@ import (
 	"net/http"
 )
 
-func signup(w http.ResponseWriter, _ *http.Request) {
+func (router *Router) signup(w http.ResponseWriter, _ *http.Request) {
 	_, _ = fmt.Fprintf(w, "Signup endpoint")
 }

@@ -42,7 +42,7 @@ var errorMessages = map[string]map[string]string{
 	},
 }
 
-func add(w http.ResponseWriter, r *http.Request) {
+func (router *Router) add(w http.ResponseWriter, r *http.Request) {
 	payload := addPayload{}
 
 	err := json.NewDecoder(r.Body).Decode(&payload)
