@@ -2,10 +2,10 @@ import React from 'react';
 import {
   Footer,
   Header,
-  Page,
   PageHeader,
   SubscriptionForm,
 } from 'components/common';
+import { PageLayout } from 'components/layouts';
 import { EventModel } from 'models';
 import { Cover, Description, MapSection, Controls } from './components';
 
@@ -14,7 +14,7 @@ interface Props {
 }
 
 export const EventPage = ({ item }: Props): JSX.Element => (
-  <Page header={<Header inverted />} footer={<Footer />}>
+  <PageLayout header={<Header inverted />} footer={<Footer />}>
     {/* Cover section */}
     <Cover img={item.cover} />
 
@@ -38,5 +38,5 @@ export const EventPage = ({ item }: Props): JSX.Element => (
         eventId: item.id,
       }}
     />
-  </Page>
+  </PageLayout>
 );

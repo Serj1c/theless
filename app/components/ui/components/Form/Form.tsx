@@ -28,6 +28,7 @@ export const Form: React.FunctionComponent<Props> & {
   return (
     <context.Provider value={value}>
       <form className={styles.root} onSubmit={onSubmit}>
+        {/* Form title */}
         {Boolean(title) && (
           <Grid.Row marginBottom='l'>
             <Grid.Col
@@ -50,6 +51,8 @@ export const Form: React.FunctionComponent<Props> & {
             </Grid.Col>
           </Grid.Row>
         )}
+
+        {/* Form content */}
         {children}
       </form>
     </context.Provider>

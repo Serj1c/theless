@@ -1,5 +1,5 @@
 import React from 'react';
-import { Logo } from './components/Logo/Logo';
+import { Logo } from 'components/common';
 import { Menu } from './components/Menu';
 import { Login } from './components/Login/Login';
 import styles from './Header.module.css';

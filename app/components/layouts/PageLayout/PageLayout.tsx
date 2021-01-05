@@ -1,7 +1,7 @@
 import React, { ReactNode, useEffect } from 'react';
 import classNames from 'classnames';
 import { Container, Loader } from 'components/ui';
-import styles from './Page.module.css';
+import styles from './PageLayout.module.css';
 
 const handleResize = (): void => {
   const vh = window.innerHeight * 0.01;
@@ -22,7 +22,7 @@ interface Props {
   topOffset?: boolean;
 }
 
-export const Page: React.FunctionComponent<Props> = ({
+export const PageLayout: React.FunctionComponent<Props> = ({
   header,
   footer,
   center,
@@ -31,6 +31,8 @@ export const Page: React.FunctionComponent<Props> = ({
   children,
 }) => {
   useEffect((): (() => void) => {
+    handleResize();
+
     window.addEventListener('resize', handleResize);
 
     return (): void => {

@@ -1,5 +1,6 @@
 import React, { useCallback, useReducer } from 'react';
-import { Footer, Header, Page } from 'components/common';
+import { Footer, Header } from 'components/common';
+import { PageLayout } from 'components/layouts';
 import { Grid } from 'components/ui';
 import { ERROR_MESSAGE_OTHER } from 'constants/errors';
 import { axios, isAxiosError } from 'utils';
@@ -71,7 +72,7 @@ export const AddEventPage = (): JSX.Element => {
   }, []);
 
   return (
-    <Page
+    <PageLayout
       center={state.isFetched}
       topOffset
       header={<Header />}
@@ -93,6 +94,6 @@ export const AddEventPage = (): JSX.Element => {
           )}
         </Grid.Col>
       </Grid.Row>
-    </Page>
+    </PageLayout>
   );
 };

@@ -4,10 +4,10 @@ import {
   Header,
   NoEvents,
   Overview,
-  Page,
   PageHeader,
   SubscriptionForm,
 } from 'components/common';
+import { PageLayout } from 'components/layouts';
 import { EventModel } from 'models/EventModel';
 
 interface Props {
@@ -16,7 +16,7 @@ interface Props {
 }
 
 export const EventsPage = ({ list, title }: Props): JSX.Element => (
-  <Page topOffset header={<Header />} footer={<Footer />}>
+  <PageLayout topOffset header={<Header />} footer={<Footer />}>
     {/* Page header */}
     <PageHeader title={title} align='center' />
 
@@ -31,5 +31,5 @@ export const EventsPage = ({ list, title }: Props): JSX.Element => (
         <SubscriptionForm title='Подписаться на&nbsp;новые события' />
       </>
     )}
-  </Page>
+  </PageLayout>
 );

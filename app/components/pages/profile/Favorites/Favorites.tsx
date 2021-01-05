@@ -1,11 +1,6 @@
 import React from 'react';
-import {
-  Footer,
-  Header,
-  Page,
-  PageHeader,
-  EventsSection,
-} from 'components/common';
+import { Footer, Header, PageHeader, EventsSection } from 'components/common';
+import { PageLayout } from 'components/layouts';
 import { FavoriteModel } from 'models';
 
 export interface Props {
@@ -13,7 +8,7 @@ export interface Props {
 }
 
 export const Favorite: React.FunctionComponent<Props> = ({ list }) => (
-  <Page topOffset header={<Header />} footer={<Footer />}>
+  <PageLayout topOffset header={<Header />} footer={<Footer />}>
     <PageHeader title='Избранное' align='center' />
 
     {/* TODO Add NoFavorite component */}
@@ -22,5 +17,5 @@ export const Favorite: React.FunctionComponent<Props> = ({ list }) => (
     ) : (
       <p>У вас пока ничего нет в&nbsp;избранном</p>
     )}
-  </Page>
+  </PageLayout>
 );

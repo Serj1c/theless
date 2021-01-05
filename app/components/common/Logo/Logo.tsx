@@ -11,7 +11,7 @@ interface Props {
   inverted?: boolean;
 }
 
-export const Logo = ({ inverted }: Props): JSX.Element => {
+export const Logo: React.FunctionComponent<Props> = ({ inverted }) => {
   const { pathname } = useRouter();
 
   const logoClassName = classNames(styles.logo, {

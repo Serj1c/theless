@@ -1,11 +1,12 @@
 import React from 'react';
-import { Footer, Header, Page, PageHeader } from 'components/common';
+import { Footer, Header, PageHeader } from 'components/common';
+import { PageLayout } from 'components/layouts';
 import { NoPlaces } from './components';
 
 export const PlacesPage: React.FunctionComponent = () => (
-  <Page topOffset header={<Header />} footer={<Footer />}>
+  <PageLayout topOffset header={<Header />} footer={<Footer />}>
     <PageHeader title='Места' align='center' />
 
     <NoPlaces />
-  </Page>
+  </PageLayout>
 );

@@ -13,7 +13,7 @@ export const ActionRow: React.FunctionComponent<Props> = ({ children }) => {
   const offsetSM = narrow ? 0 : 4;
 
   return (
-    <Grid.Row>
+    <Grid.Row marginTop='l'>
       <Grid.Col cols={cols} colsSM={colsSM} offsetSM={offsetSM}>
         {children}
       </Grid.Col>
