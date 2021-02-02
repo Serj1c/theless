@@ -19,7 +19,11 @@ export const EventPage = ({ item }: Props): JSX.Element => (
     <Cover img={item.cover} />
 
     {/* Headline section */}
-    <PageHeader title={item.name} />
+    <PageHeader
+      title={item.name}
+      image={item.cover}
+      description={item.description}
+    />
 
     {/* Controls */}
     {/* TODO Implement isFavorite */}

@@ -14,8 +14,9 @@ interface Props extends LinkProps {
   color?: Color;
   rounded?: boolean;
   underline?: boolean;
-  children: React.ReactNode;
   target?: string;
+  icon?: React.ReactNode;
+  fullWidth?: boolean;
 }
 
 export const Link: React.FunctionComponent<Props> = ({
@@ -26,6 +27,9 @@ export const Link: React.FunctionComponent<Props> = ({
   underline = true,
   href,
   as,
+  children,
+  icon,
+  fullWidth,
   ...props
 }) => {
   const isButtonDesign = design !== 'link';
@@ -36,18 +40,21 @@ export const Link: React.FunctionComponent<Props> = ({
     [styles[`root_color_${color}`]]: color,
     [styles[`root_size_${size}`]]: size && isButtonDesign,
     [styles.root_rounded]: rounded && isButtonDesign,
+    [styles.root_withIcon]: icon && isButtonDesign,
+    [styles.root_onlyIcon]: icon && isButtonDesign && !children,
+    [styles.root_fullwidth]: fullWidth,
   });
 
-  if (
-    (typeof href === 'string' && href.startsWith('mailto:')) ||
-    props.target
-  ) {
-    return <a {...props} href={href as string} className={className} />;
-  }
+  const iconClassName = classNames(styles.icon, {
+    [styles.icon_onlyIcon]: !children,
+  });
 
   return (
     <NextLink href={href} as={as} passHref>
-      <a {...props} href={href as string} className={className} />
+      <a {...props} href={href as string} className={className}>
+        {icon && <span className={iconClassName}>{icon}</span>}
+        {children}
+      </a>
     </NextLink>
   );
 };

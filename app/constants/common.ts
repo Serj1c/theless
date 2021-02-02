@@ -14,3 +14,10 @@ export const YM_OPTIONS = {
 };
 
 export const GA_ID = 'UA-165389436-1';
+
+export const TWITTER_SHARE_URL = `https://twitter.com/share?url=`;
+export const FACEBOOK_SHARE_URL = `https://www.facebook.com/sharer.php?u=`;
+export const HOST_URL =
+  process.env.NODE_ENV === 'development'
+    ? `https://theless.dev`
+    : `https://theless.ru`;
