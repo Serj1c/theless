@@ -43,7 +43,7 @@
                 -p 80:80 -p 443:443
                 certbot/certbot certonly
     ```
-2. Update `theless.ru`, `www.theless.ru`, `the-less.ru` and `www.the-less.ru` certificates.
+2. Update `theless.ru` and `www.theless.ru` certificates.
 
 ### Connect to the container
 
