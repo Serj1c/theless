@@ -62,6 +62,7 @@
 
 /* Fullwidth modifier */
 .root_fullwidth {
+  display: block;
   width: 100%;
 }
 

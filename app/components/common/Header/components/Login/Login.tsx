@@ -18,7 +18,7 @@ export const Login: React.FunctionComponent<Props> = ({ inverted }) => {
   });
 
   return (
-    <Link href='/login' passHref>
+    <Link href='/auth' passHref>
       <a className={className}>{user ? <ProfileIcon /> : <LoginIcon />}</a>
     </Link>
   );

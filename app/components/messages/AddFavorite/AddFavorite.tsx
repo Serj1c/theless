@@ -18,7 +18,7 @@ export const AddFavorite: React.FunctionComponent<Props> = ({
 
     {!isAuthorised && (
       <Paragraph color='inverted'>
-        <Link href='/login' color='light'>
+        <Link href='/auth' color='light'>
           Авторизуйтесь
         </Link>{' '}
         или{' '}

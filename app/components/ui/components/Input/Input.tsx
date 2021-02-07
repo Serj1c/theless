@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useImperativeHandle, useRef } from 'react';
 import classNames from 'classnames';
 import styles from './Input.module.css';
 
@@ -10,26 +10,31 @@ interface Props
   size?: Size;
   rounded?: boolean;
   textAlign?: TextAlign;
+  ref?: React.Ref<HTMLInputElement>;
 }
 
-export const Input: React.FunctionComponent<Props> = ({
-  size = 'm',
-  textAlign = 'left',
-  rounded,
-  autoFocus,
-  ...restProps
-}) => {
-  const ref = useRef<HTMLInputElement>(null);
-  const className = classNames(styles.root, styles[`root_size_${size}`], {
-    [styles.root_rounded]: rounded,
-    [styles[`root_text-align_${textAlign}`]]: textAlign,
-  });
+export const Input: React.FunctionComponent<Props> = React.forwardRef(
+  (
+    { size = 'm', textAlign = 'left', autoFocus, rounded, ...restProps },
+    ref
+  ) => {
+    const inputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    if (ref.current && autoFocus) {
-      ref.current.focus();
-    }
-  }, [autoFocus]);
+    useImperativeHandle(ref, () => inputRef.current);
 
-  return <input ref={ref} className={className} {...restProps} />;
-};
+    const className = classNames(styles.root, styles[`root_size_${size}`], {
+      [styles.root_rounded]: rounded,
+      [styles[`root_text-align_${textAlign}`]]: textAlign,
+    });
+
+    // There is a Next.js issue when input doesn't get focus after the first
+    // page renders and gets after component rerender.
+    useEffect(() => {
+      if (autoFocus) {
+        inputRef.current.focus();
+      }
+    }, [autoFocus]);
+
+    return <input ref={inputRef} className={className} {...restProps} />;
+  }
+);

@@ -1,11 +1,16 @@
-export { AddEventPage } from './AddEventPage/AddEventPage';
+// Auth
+export { AuthPage } from './auth/AuthPage';
+export { RecoveryPage } from './auth/RecoveryPage';
+export { LoginPage } from './auth/LoginPage';
+export { SignUpPage } from './auth/SignUpPage';
+export { ForgetPage } from './auth/ForgetPage';
+
+// Other pages
+export { AddEventPage } from './AddEventPage';
 export { BlogPage } from './BlogPage';
-export { EventPage } from './EventPage/EventPage';
-export { EventsPage } from './EventsPage/EventsPage';
+export { EventPage } from './EventPage';
+export { EventsPage } from './EventsPage';
 export { LearningPage } from './LearningPage';
-export { LoginPage } from './LoginPage';
 export { PlacesPage } from './PlacesPage';
-export { ResetPassword } from './ResetPassword/ResetPassword';
 export { ShopPage } from './ShopPage';
-export { SignUpPage } from './SignUpPage/SignUpPage';
 export { ToursPage } from './ToursPage';

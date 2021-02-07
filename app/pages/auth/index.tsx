@@ -1,14 +1,14 @@
 import React from 'react';
 import { NextPage } from 'next';
+import { AuthPage as Page } from 'components/pages';
 import Head from 'next/head';
-import { ResetPassword as Page } from 'components/pages';
 import { TITLE_PREFIX } from 'constants/common';
 
-const SignUpPage: NextPage = () => (
+const LoginPage: NextPage = () => (
   <>
     {/* Render page meta */}
     <Head>
-      <title>{TITLE_PREFIX}Сброс пароля</title>
+      <title>{TITLE_PREFIX}Вход</title>
     </Head>
 
     {/* Render page content */}
@@ -16,4 +16,4 @@ const SignUpPage: NextPage = () => (
   </>
 );
 
-export default SignUpPage;
+export default LoginPage;
