@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { Grid } from '../../../Grid';
 import { Text } from '../../../Text';
+import { Input, Props as InputProps } from '../../../Input/Input';
 import { Paragraph } from '../../../Paragraph';
 import { context } from '../../Form';
 
 export interface Props {
-  children: React.ReactNode;
   label?: string;
   htmlFor?: string;
   error?: string;
@@ -35,7 +35,12 @@ export const Row: React.FunctionComponent<Props> = ({
       )}
 
       <Grid.Col cols={cols} colsSM={contentCols}>
-        {children}
+        {/* Pass invalid prop into children if it's Input */}
+        {React.isValidElement(children) && children.type === Input
+          ? React.cloneElement<InputProps>(children, {
+              invalid: Boolean(error),
+            })
+          : children}
 
         {/* Error text */}
         {Boolean(error) && (

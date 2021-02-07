@@ -12,11 +12,11 @@ export const Confirm: React.FunctionComponent<Props> = ({ email }) => (
       Регистрация
     </Header>
 
-    <Paragraph marginBottom='m'>
+    <Paragraph>
       Осталось сделать последний шаг&nbsp;&mdash; подтвердить email.
     </Paragraph>
 
-    <Paragraph marginBottom='m'>
+    <Paragraph>
       Проверьте ящик <strong>{email}</strong>, там уже ждем письмо
       с&nbsp;ссылкой на&nbsp;подтверждение регистрации.
     </Paragraph>

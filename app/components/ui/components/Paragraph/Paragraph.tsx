@@ -32,7 +32,7 @@ export const Paragraph: React.FunctionComponent<Props> = ({
   size = 'm',
   color = 'default',
   align = 'left',
-  margin = 'xs',
+  margin = 's',
   marginTop,
   marginBottom,
   ...props
