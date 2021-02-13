@@ -44,7 +44,11 @@ export const Form: React.FunctionComponent<Props> & {
                 {title}
               </Header>
               {error && (
-                <Paragraph color='caution' align={narrow ? 'center' : 'left'}>
+                <Paragraph
+                  color='caution'
+                  align={narrow ? 'center' : 'left'}
+                  marginBottom='none'
+                >
                   {error}
                 </Paragraph>
               )}

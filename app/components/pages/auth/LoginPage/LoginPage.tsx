@@ -5,14 +5,15 @@ import React, {
   useState,
 } from 'react';
 import { useRouter } from 'next/router';
-import { Button, Form, Input, Link, Text } from 'components/ui';
+import { useUser } from 'components/providers';
 import { AuthLayout } from 'components/layouts';
+import { Button, Form, Input, Link, Text } from 'components/ui';
 import { HOMEPAGE_URL } from 'constants/common';
+import { ERROR_MESSAGE_OTHER } from 'constants/errors';
+import { axios, isAxiosError } from 'utils';
 
-interface FormData {
-  [k: string]: string;
-  email: string;
-  password: string;
+interface ErrorPayload {
+  error?: string;
 }
 
 interface FormErrors {
@@ -21,21 +22,17 @@ interface FormErrors {
   password?: string;
 }
 
-const initFormData: FormData = {
-  email: '',
-  password: '',
-};
-
 const initFormErrors: FormErrors = {};
 
 export const LoginPage: React.FunctionComponent = () => {
   const router = useRouter();
-  const [formData, setFormData] = useState<FormData>(initFormData);
+  const { email, setEmail } = useUser();
+  const [password, setPassword] = useState<string>('');
   const [formErrors, setFormErrors] = useState<FormErrors>(initFormErrors);
+  const [formError, setFromError] = useState<string | undefined>();
   const [isFetching, setIsFetching] = useState<boolean>(false);
-  // TODO Setup init value
   const [focus, setFocus] = useState<'email' | 'password' | undefined>(
-    !formData.email ? 'email' : 'password'
+    !email ? 'email' : 'password'
   );
 
   // Flush focus for future times
@@ -50,15 +47,20 @@ export const LoginPage: React.FunctionComponent = () => {
     ({ target }) => {
       const { name, value } = target;
 
-      // Update form value
-      setFormData((v) => ({
-        ...v,
-        [name]: value,
-      }));
-
       // Flush error if exist and value changed
       if (formErrors[name] && value) {
         setFormErrors((v) => ({ ...v, [name]: undefined }));
+      }
+
+      // Setting up email into user provider
+      if (name === 'email') {
+        setEmail(value);
+
+        return;
+      }
+
+      if (name === 'password') {
+        setPassword(value);
       }
     },
     [formErrors]
@@ -68,8 +70,6 @@ export const LoginPage: React.FunctionComponent = () => {
   const handleSubmit = useCallback<React.FormEventHandler<HTMLFontElement>>(
     async (event) => {
       event.preventDefault();
-
-      const { email, password } = formData;
 
       // Some of the fields are empty, show errors and set focus
       if (!email || !password) {
@@ -84,27 +84,32 @@ export const LoginPage: React.FunctionComponent = () => {
       }
 
       setIsFetching(true);
+      setFromError(undefined);
 
-      // TODO Implement
-      await new Promise<void>((resolve) => {
-        setTimeout(() => {
-          router.push(HOMEPAGE_URL);
-          resolve();
-        }, 200 + Math.random() * 800);
-      });
+      try {
+        await axios.post('/auth/login', { email, password });
 
-      setIsFetching(false);
+        await router.push(HOMEPAGE_URL);
+      } catch (err: unknown) {
+        if (isAxiosError<ErrorPayload>(err) && err.response.data.error) {
+          setFromError(err.response.data.error);
+        } else {
+          setFromError(ERROR_MESSAGE_OTHER);
+        }
+      } finally {
+        setIsFetching(false);
+      }
     },
-    [formData]
+    [email, password]
   );
 
   return (
     <AuthLayout>
-      <Form title='Вход' narrow onSubmit={handleSubmit}>
+      <Form title='Вход' error={formError} narrow onSubmit={handleSubmit}>
         <Form.Row label='Email' error={formErrors.email}>
           <Input
             name='email'
-            value={formData.email}
+            value={email}
             autoFocus={focus === 'email'}
             placeholder='Введите email'
             onChange={handleChange}
@@ -115,7 +120,7 @@ export const LoginPage: React.FunctionComponent = () => {
           <Input
             type='password'
             name='password'
-            value={formData.password}
+            value={password}
             autoFocus={focus === 'password'}
             placeholder='Введите пароль'
             onChange={handleChange}
@@ -123,7 +128,6 @@ export const LoginPage: React.FunctionComponent = () => {
         </Form.Row>
 
         <Form.Row>
-          {/* TODO Improve */}
           <Text size='m'>
             <Link href='/auth/forget' color='dark'>
               Не помню пароль

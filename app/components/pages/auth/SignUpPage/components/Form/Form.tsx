@@ -1,10 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { useUser } from 'components/providers';
 import { Button, Input, Form as FormComponent } from 'components/ui';
-
-interface FormData {
-  email: string;
-  password: string;
-}
 
 interface FormErrors {
   [k: string]: string;
@@ -12,26 +8,17 @@ interface FormErrors {
   password?: string;
 }
 
-interface OnChangeParams {
-  name: string;
-  value: string;
-}
-
 interface Props {
-  data: FormData;
-  onChange: (params: OnChangeParams) => void;
   onNext: () => void;
 }
 
-export const Form: React.FunctionComponent<Props> = ({
-  data,
-  onChange,
-  onNext,
-}) => {
+export const Form: React.FunctionComponent<Props> = ({ onNext }) => {
+  const { email, setEmail } = useUser();
+  const [password, setPassword] = useState<string>('');
   const [formErrors, setFormErrors] = useState<FormErrors>({});
   const [isFetching, setIsFetching] = useState<boolean>(false);
   const [focus, setFocus] = useState<'email' | 'password' | undefined>(
-    !data.email ? 'email' : 'password'
+    !email ? 'email' : 'password'
   );
 
   // Flush focus for future times
@@ -46,11 +33,19 @@ export const Form: React.FunctionComponent<Props> = ({
     ({ target }) => {
       const { name, value } = target;
 
-      onChange({ name, value });
-
       // Flush error if exist and value changed
       if (formErrors[name] && value) {
         setFormErrors((v) => ({ ...v, [name]: undefined }));
+      }
+
+      if (name === 'email') {
+        setEmail(value);
+
+        return;
+      }
+
+      if (name === 'password') {
+        setPassword(value);
       }
     },
     [formErrors]
@@ -60,8 +55,6 @@ export const Form: React.FunctionComponent<Props> = ({
   const handleSubmit = useCallback<React.FormEventHandler<HTMLFontElement>>(
     async (event) => {
       event.preventDefault();
-
-      const { email, password } = data;
 
       // Some of the fields are empty, show errors and set focus
       if (!email || !password) {
@@ -89,7 +82,7 @@ export const Form: React.FunctionComponent<Props> = ({
       // Go to the next step
       onNext();
     },
-    [data]
+    [email, password]
   );
 
   return (
@@ -97,7 +90,7 @@ export const Form: React.FunctionComponent<Props> = ({
       <FormComponent.Row label='Email' error={formErrors.email}>
         <Input
           name='email'
-          value={data.email}
+          value={email}
           autoFocus={focus === 'email'}
           placeholder='Введите email'
           onChange={handleChange}
@@ -108,7 +101,7 @@ export const Form: React.FunctionComponent<Props> = ({
         <Input
           type='password'
           name='password'
-          value={data.password}
+          value={password}
           placeholder='Придумайте пароль'
           autoFocus={focus === 'password'}
           onChange={handleChange}

@@ -1,3 +1,4 @@
 import { AxiosError } from 'axios';
 
-export const isAxiosError = (arg: any): arg is AxiosError => arg?.response;
+export const isAxiosError = <T = any>(err: any): err is AxiosError<T> =>
+  err?.isAxiosError;

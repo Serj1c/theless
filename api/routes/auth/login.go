@@ -2,7 +2,6 @@ package auth
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 )
 
@@ -12,8 +11,7 @@ type loginPayload struct {
 }
 
 type loginResponse struct {
-	Email   string `json:"email"`
-	Message string `json:"message,omitempty"`
+	Error string `json:"error,omitempty"`
 }
 
 func (router *Router) login(w http.ResponseWriter, r *http.Request) {
@@ -26,17 +24,7 @@ func (router *Router) login(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	res := loginResponse{
-		Email:   payload.Email,
-		Message: "Hello, world!",
-	}
+	// TODO Implement auth here
 
-	str, err := json.Marshal(res)
-
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-
-	_, _ = fmt.Fprintf(w, string(str))
+	w.WriteHeader(http.StatusNoContent)
 }

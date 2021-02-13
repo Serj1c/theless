@@ -5,14 +5,15 @@ import React, {
   useState,
 } from 'react';
 import { useRouter } from 'next/router';
-import { Button, Form, Input } from 'components/ui';
+import { useUser } from 'components/providers';
 import { AuthLayout } from 'components/layouts';
+import { Button, Form, Input } from 'components/ui';
 
 export const AuthPage: React.FunctionComponent = () => {
-  const [email, setEmail] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
   const emailRef = useRef<HTMLInputElement>();
   const router = useRouter();
+  const { email, setEmail } = useUser();
 
   /** Input change handler */
   const handleChange = useCallback<ChangeEventHandler<HTMLInputElement>>(
@@ -57,11 +58,9 @@ export const AuthPage: React.FunctionComponent = () => {
         return;
       }
 
-      if (event.target instanceof HTMLButtonElement) {
-        router.push(`/auth/${event.target.name}`);
-      }
+      router.push('/auth/login');
     },
-    []
+    [email]
   );
 
   return (
