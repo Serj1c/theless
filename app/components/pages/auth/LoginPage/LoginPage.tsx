@@ -84,10 +84,11 @@ export const LoginPage: React.FunctionComponent = () => {
       }
 
       setIsFetching(true);
-      setFromError(undefined);
 
       try {
         await axios.post('/auth/login', { email, password });
+
+        setFromError(undefined);
 
         await router.push(HOMEPAGE_URL);
       } catch (err: unknown) {
@@ -96,9 +97,9 @@ export const LoginPage: React.FunctionComponent = () => {
         } else {
           setFromError(ERROR_MESSAGE_OTHER);
         }
-      } finally {
-        setIsFetching(false);
       }
+
+      setIsFetching(false);
     },
     [email, password]
   );

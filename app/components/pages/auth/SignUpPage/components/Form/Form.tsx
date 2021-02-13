@@ -1,6 +1,16 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { ERROR_MESSAGE_OTHER } from 'constants/errors';
 import { useUser } from 'components/providers';
-import { Button, Input, Form as FormComponent } from 'components/ui';
+import { Button, Form as FormComponent, Input } from 'components/ui';
+import { axios, isAxiosError } from 'utils';
+
+interface ErrorPayload {
+  error?: string;
+  errors?: {
+    email?: string;
+    password?: string;
+  };
+}
 
 interface FormErrors {
   [k: string]: string;
@@ -16,6 +26,7 @@ export const Form: React.FunctionComponent<Props> = ({ onNext }) => {
   const { email, setEmail } = useUser();
   const [password, setPassword] = useState<string>('');
   const [formErrors, setFormErrors] = useState<FormErrors>({});
+  const [formError, setFormError] = useState<string | undefined>();
   const [isFetching, setIsFetching] = useState<boolean>(false);
   const [focus, setFocus] = useState<'email' | 'password' | undefined>(
     !email ? 'email' : 'password'
@@ -70,23 +81,39 @@ export const Form: React.FunctionComponent<Props> = ({ onNext }) => {
 
       setIsFetching(true);
 
-      // TODO Implement
-      await new Promise<void>((resolve) => {
-        setTimeout(() => {
-          resolve();
-        }, 200 + Math.random() * 800);
-      });
+      try {
+        await axios.post('/auth/signup', { email, password });
+
+        setFormError(undefined);
+        setFormErrors({});
+
+        // Go to the next step when success
+        onNext();
+      } catch (err) {
+        if (
+          isAxiosError<ErrorPayload>(err) &&
+          (err.response.data.error || err.response.data.errors)
+        ) {
+          setFormError(err.response.data.error);
+          setFormErrors(err.response.data.errors || {});
+        } else {
+          setFormError(ERROR_MESSAGE_OTHER);
+          setFormErrors({});
+        }
+      }
 
       setIsFetching(false);
-
-      // Go to the next step
-      onNext();
     },
     [email, password]
   );
 
   return (
-    <FormComponent title='Регистрация' narrow onSubmit={handleSubmit}>
+    <FormComponent
+      title='Регистрация'
+      error={formError}
+      narrow
+      onSubmit={handleSubmit}
+    >
       <FormComponent.Row label='Email' error={formErrors.email}>
         <Input
           name='email'
