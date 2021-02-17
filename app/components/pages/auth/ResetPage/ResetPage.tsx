@@ -1,21 +1,43 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import { AuthLayout } from 'components/layouts';
 import { Button, Form, Input } from 'components/ui';
-import { useRouter } from 'next/router';
-import { HOMEPAGE_URL } from '../../../../constants/common';
+import { HOMEPAGE_URL } from 'constants/common';
+import { ERROR_MESSAGE_OTHER } from 'constants/errors';
+import { axios, isAxiosError } from 'utils';
 
-export const RecoveryPage: React.FunctionComponent = () => {
+interface ErrorPayload {
+  errors?: {
+    email?: string;
+  };
+}
+
+interface Props {
+  title: string;
+  token: string;
+}
+
+export const ResetPage: React.FunctionComponent<Props> = ({ title, token }) => {
   const [isFetching, setIsFetching] = useState<boolean>(false);
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
+  const [commonError, setCommonError] = useState<string | null>(null);
   const [focus, setFocus] = useState<boolean>(true);
   const router = useRouter();
 
   // Flush focus for future times
   useEffect(() => {
-    setTimeout(() => {
+    if (!focus) {
+      return;
+    }
+
+    const timerId = setTimeout(() => {
       setFocus(false);
     }, 0);
+
+    return () => {
+      clearTimeout(timerId);
+    };
   }, [focus]);
 
   /** Input change handler */
@@ -36,6 +58,7 @@ export const RecoveryPage: React.FunctionComponent = () => {
     async (event) => {
       event.preventDefault();
 
+      // Validate form
       if (!password) {
         setError('Введите новый пароль');
         setFocus(true);
@@ -43,23 +66,34 @@ export const RecoveryPage: React.FunctionComponent = () => {
         return;
       }
 
+      // Update state of component
       setIsFetching(true);
+      setCommonError(null);
 
-      // TODO implement
-      await new Promise((resolve) => {
-        setTimeout(() => {
-          resolve(undefined);
-        }, 200 + Math.random() * 800);
-      });
+      // Making request
+      try {
+        await axios.post('/auth/reset-password', { password, token });
 
-      await router.push(HOMEPAGE_URL);
+        await router.push(HOMEPAGE_URL);
+      } catch (err: unknown) {
+        if (
+          isAxiosError<ErrorPayload>(err) &&
+          err.response.data?.errors?.email
+        ) {
+          setError(err.response.data.errors.email);
+        } else {
+          setCommonError(ERROR_MESSAGE_OTHER);
+        }
+      }
+
+      setIsFetching(false);
     },
-    [password]
+    [password, token]
   );
 
   return (
     <AuthLayout>
-      <Form title='Восстановление пароля' narrow onSubmit={handleSubmit}>
+      <Form title={title} narrow error={commonError} onSubmit={handleSubmit}>
         <Form.Row label='Новый пароль' error={error}>
           <Input
             type='password'
