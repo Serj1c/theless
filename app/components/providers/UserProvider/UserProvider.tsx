@@ -7,7 +7,7 @@ interface Props {
 
 export const UserProvider = ({ children }: Props): JSX.Element => {
   const [user, setUser] = useState<User | null>(null);
-  const [email, setEmail] = useState<string | null>(null);
+  const [email, setEmail] = useState<string>('');
 
   const value = useMemo<UserContext>(
     () => ({ user, setUser, email, setEmail }),

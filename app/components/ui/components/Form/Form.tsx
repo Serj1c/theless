@@ -29,20 +29,23 @@ export const Form: React.FunctionComponent<Props> & {
     <context.Provider value={value}>
       <form className={styles.root} onSubmit={onSubmit}>
         {/* Form title */}
-        {Boolean(title) && (
+        {Boolean(title || error) && (
           <Grid.Row marginBottom='l'>
             <Grid.Col
               cols={12}
               colsSM={narrow ? 12 : 8}
               offsetSM={narrow ? 0 : 4}
             >
-              <Header
-                level={2}
-                margin='none'
-                align={narrow ? 'center' : undefined}
-              >
-                {title}
-              </Header>
+              {title && (
+                <Header
+                  level={2}
+                  margin='none'
+                  align={narrow ? 'center' : undefined}
+                >
+                  {title}
+                </Header>
+              )}
+
               {error && (
                 <Paragraph
                   color='caution'

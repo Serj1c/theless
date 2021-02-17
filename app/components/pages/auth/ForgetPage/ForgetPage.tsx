@@ -1,11 +1,16 @@
-import React from 'react';
-import { useUser } from 'components/providers';
+import React, { useCallback, useState } from 'react';
 import { AuthLayout } from 'components/layouts';
-import { Grid, Header, Link, Paragraph } from 'components/ui';
-import { HOMEPAGE_URL } from 'constants/common';
+import { Header } from 'components/ui';
+import { Step1, Step2 } from './components';
+
+type AppState = 'step1' | 'step2';
 
 export const ForgetPage: React.FunctionComponent = () => {
-  const { email } = useUser();
+  const [state, setState] = useState<AppState>('step1');
+
+  const handleNext = useCallback(() => {
+    setState('step2');
+  }, []);
 
   return (
     <AuthLayout>
@@ -13,18 +18,7 @@ export const ForgetPage: React.FunctionComponent = () => {
         Восстановление пароля
       </Header>
 
-      <Paragraph marginBottom='m'>
-        Проверьте ящик <strong>{email}</strong>, там уже ждем письмо
-        с&nbsp;ссылкой на&nbsp;восстановление пароля.
-      </Paragraph>
-
-      <Grid.Row marginTop='xl'>
-        <Grid.Col>
-          <Link href={HOMEPAGE_URL} design='primary' fullWidth>
-            Ок
-          </Link>
-        </Grid.Col>
-      </Grid.Row>
+      {state === 'step1' ? <Step1 onNext={handleNext} /> : <Step2 />}
     </AuthLayout>
   );
 };

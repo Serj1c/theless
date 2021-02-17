@@ -37,9 +37,13 @@ export const LoginPage: React.FunctionComponent = () => {
 
   // Flush focus for future times
   useEffect(() => {
-    setTimeout(() => {
+    const timerId = setTimeout(() => {
       setFocus(undefined);
     }, 0);
+
+    return () => {
+      clearTimeout(timerId);
+    };
   }, [focus]);
 
   /** Input change handler */
