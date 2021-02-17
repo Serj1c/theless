@@ -3,13 +3,14 @@ package events
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/varkadov/theless/api/config"
-	"github.com/varkadov/theless/api/libs/slack"
-	"gopkg.in/go-playground/validator.v9"
 	"net/http"
 	"os"
 	"strings"
 	"time"
+
+	"github.com/varkadov/theless/api/config"
+	"github.com/varkadov/theless/api/libs/slack"
+	"gopkg.in/go-playground/validator.v9"
 )
 
 type addPayload struct {

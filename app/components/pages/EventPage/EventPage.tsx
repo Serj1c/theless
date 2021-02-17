@@ -22,7 +22,7 @@ export const EventPage = ({ item }: Props): JSX.Element => (
     <PageHeader
       title={item.name}
       image={item.cover}
-      description={item.description}
+      description={item.shortDescription}
     />
 
     {/* Controls */}

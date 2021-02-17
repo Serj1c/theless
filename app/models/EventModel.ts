@@ -16,4 +16,5 @@ export interface EventModel {
   description?: string;
   coordinates?: [number, number];
   isFavorite?: boolean;
+  shortDescription?: string;
 }

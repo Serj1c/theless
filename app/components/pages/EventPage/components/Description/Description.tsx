@@ -13,11 +13,9 @@ export const Description: React.FunctionComponent<Props> = ({ item }) => (
       <Paragraph marginTop='none' size='l' color='noaccent'>
         {formatDate(item.dateStart, item.dateEnd)}
       </Paragraph>
-
       <Paragraph size='l' color='noaccent'>
         {item.location.name}, {item.address}
       </Paragraph>
-
       {/* Link to the event's official site */}
       {item.link && (
         <Paragraph size='l' marginTop='l'>
@@ -28,9 +26,7 @@ export const Description: React.FunctionComponent<Props> = ({ item }) => (
       )}
 
       {item.description && (
-        <Paragraph marginTop='l' size='l'>
-          {item.description}
-        </Paragraph>
+        <div dangerouslySetInnerHTML={{ __html: item.description }} />
       )}
     </Grid.Col>
   </Grid.Row>

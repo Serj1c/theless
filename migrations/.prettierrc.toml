@@ -1,0 +1,8 @@
+jsxSingleQuote = true
+singleQuote = true
+
+[[overrides]]
+files = ['*.md']
+
+[overrides.options]
+proseWrap = 'always'

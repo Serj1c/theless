@@ -1,8 +1,8 @@
 const config = {
   mongodb: {
-    url: "mongodb://db:27017",
+    url: 'mongodb://db:27017',
 
-    databaseName: "less",
+    databaseName: 'less',
 
     options: {
       useNewUrlParser: true, // removes a deprecation warning when connecting
@@ -13,13 +13,13 @@ const config = {
   },
 
   // The migrations dir, can be an relative or absolute path. Only edit this when really necessary.
-  migrationsDir: "migrations",
+  migrationsDir: 'migrations',
 
   // The mongodb collection where the applied changes are stored. Only edit this when really necessary.
-  changelogCollectionName: "changelog",
+  changelogCollectionName: 'changelog',
 
   // The file extension to create migrations and search for in migration dir
-  migrationFileExtension: ".js",
+  migrationFileExtension: '.js',
 };
 
 // Return the config as a promise

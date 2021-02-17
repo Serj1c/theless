@@ -3,10 +3,11 @@ package events
 import (
 	"encoding/json"
 	"fmt"
+	"net/http"
+
 	"github.com/globalsign/mgo/bson"
 	"github.com/go-chi/chi"
 	"github.com/varkadov/theless/api/config"
-	"net/http"
 )
 
 // getItem return list of events for the location
@@ -72,17 +73,18 @@ func (router *Router) getItem(w http.ResponseWriter, r *http.Request) {
 
 	stageProject := bson.M{
 		"$project": bson.M{
-			"address":     1,
-			"cover":       1,
-			"dateStart":   1,
-			"dateEnd":     1,
-			"name":        1,
-			"slug":        1,
-			"location":    1,
-			"description": 1,
-			"coordinates": 1,
-			"link":        1,
-			"isFavorite":  1,
+			"address":          1,
+			"cover":            1,
+			"dateStart":        1,
+			"dateEnd":          1,
+			"name":             1,
+			"slug":             1,
+			"location":         1,
+			"description":      1,
+			"coordinates":      1,
+			"link":             1,
+			"isFavorite":       1,
+			"shortDescription": 1,
 		},
 	}
 
