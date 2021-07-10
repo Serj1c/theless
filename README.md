@@ -11,6 +11,12 @@
 
 1. Run `ENV=development docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d`.
 
+### Add local certificates (Google Chrome)
+
+1. Open Chrome Settings -> Security -> Manage certificates
+2. Drag and drop certificates (taken from /certs) there
+3. Double click on each of them -> Trust -> "Always Trust"
+
 ## Prod environment
 
 ### Deploy
