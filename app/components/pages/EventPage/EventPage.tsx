@@ -13,7 +13,7 @@ interface Props {
   item?: EventModel;
 }
 
-const EventPage = ({ item }: Props): JSX.Element => (
+export const EventPage = ({ item }: Props): JSX.Element => (
   <Page header={<Header inverted />} footer={<Footer />}>
     {/* Cover section */}
     <Cover img={item.cover} />
@@ -36,5 +36,3 @@ const EventPage = ({ item }: Props): JSX.Element => (
     />
   </Page>
 );
-
-export default EventPage;

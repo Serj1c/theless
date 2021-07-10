@@ -1,7 +1,7 @@
 import React from 'react';
 import { GetServerSideProps, NextPage } from 'next';
 import ErrorPage from 'next/error';
-import EventsPage from 'components/pages/EventsPage/EventsPage';
+import { EventsPage } from 'components/pages';
 import { EventModel } from 'models';
 import jsonrpc from 'utils/jsonrpc';
 

@@ -15,7 +15,7 @@ interface Props {
   list?: EventModel[];
 }
 
-const EventsPage = ({ list, title }: Props): JSX.Element => (
+export const EventsPage = ({ list, title }: Props): JSX.Element => (
   <Page topOffset header={<Header />} footer={<Footer />}>
     {/* Page header */}
     <PageHeader title={title} />
@@ -33,5 +33,3 @@ const EventsPage = ({ list, title }: Props): JSX.Element => (
     )}
   </Page>
 );
-
-export default EventsPage;

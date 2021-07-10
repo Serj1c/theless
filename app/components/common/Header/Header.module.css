@@ -1,6 +1,29 @@
 .root {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
   align-items: center;
-  height: 70px;
   justify-content: center;
+  height: 70px;
+  max-width: 1168px;
+  padding: 0 16px;
+  margin: 0 auto;
+}
+
+.left,
+.center,
+.right {
+  display: flex;
+}
+
+.left {
+  justify-content: flex-start;
+}
+
+.center {
+  justify-content: center;
+}
+
+.right {
+  justify-content: flex-end;
 }

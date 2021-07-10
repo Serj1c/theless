@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import Router from 'next/router';
-import { YM_ID, YM_OPTIONS, GA_ID } from 'constants/common';
+import { GA_ID, YM_ID, YM_OPTIONS } from 'constants/common';
 import { init as initYM } from 'utils/YandexMetrika';
 import { init as initGA } from 'utils/GoogleAnalitics';
 import './styles.css';
+import { UserProvider } from '../components/providers';
 
 interface Props {
   Component: React.FunctionComponent;
@@ -32,7 +33,11 @@ const App = ({ Component, pageProps }: Props): JSX.Element => {
     };
   }, []);
 
-  return <Component {...pageProps} />;
+  return (
+    <UserProvider>
+      <Component {...pageProps} />
+    </UserProvider>
+  );
 };
 
 export default App;

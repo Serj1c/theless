@@ -1,5 +1,5 @@
 export const HOMEPAGE_URL = '/events';
-export const TITLE_PREFIX = 'Less';
+export const TITLE_PREFIX = 'Less –';
 
 export const YM_ID = 62535382;
 export const YM_OPTIONS = {

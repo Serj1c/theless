@@ -1,5 +1,5 @@
 import Footer from './Footer/Footer';
-import Header from './Header/Header';
+export { Header } from './Header/Header';
 import Headline from './Headline/Headline';
 import NoEvents from './NoEvents/NoEvents';
 import Overview from './Overview/Overview';
@@ -10,7 +10,6 @@ import Map from './Map/Map';
 
 export {
   Footer,
-  Header,
   Headline,
   NoEvents,
   Overview,

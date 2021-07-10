@@ -11,7 +11,7 @@ interface Props {
   inverted?: boolean;
 }
 
-const Logo = ({ inverted }: Props): JSX.Element => {
+export const Logo = ({ inverted }: Props): JSX.Element => {
   const { pathname } = useRouter();
   const logoClassName = classNames(styles.logo, {
     [styles.logo_inverted]: inverted,
@@ -29,5 +29,3 @@ const Logo = ({ inverted }: Props): JSX.Element => {
     </Link>
   );
 };
-
-export default Logo;

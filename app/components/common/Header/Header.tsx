@@ -1,14 +1,24 @@
 import React from 'react';
-import Logo from './components/Logo/Logo';
+import { Logo } from './components/Logo/Logo';
+import { Menu } from './components/Menu/Menu';
+import { Login } from './components/Login/Login';
 import styles from './Header.module.css';
 
 interface Props {
   inverted?: boolean;
 }
 
-const Header = ({ inverted }: Props): JSX.Element => (
+export const Header = ({ inverted }: Props): JSX.Element => (
   <div className={styles.root}>
-    <Logo inverted={inverted} />
+    <div className={styles.left}>
+      <Menu />
+    </div>
+    <div className={styles.center}>
+      <Logo inverted={inverted} />
+    </div>
+    <div className={styles.right}>
+      <Login inverted={inverted} />
+    </div>
   </div>
 );
 

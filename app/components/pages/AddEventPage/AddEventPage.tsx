@@ -12,7 +12,7 @@ import {
 } from './reducer';
 import { ERROR_MESSAGE_HTTP, ERROR_MESSAGE_OTHER } from 'constants/errors';
 
-const AddEventPage = () => {
+export const AddEventPage = () => {
   const [state, dispatch] = useReducer(reducer, initState);
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = useCallback(
@@ -88,5 +88,3 @@ const AddEventPage = () => {
     </Page>
   );
 };
-
-export default AddEventPage;

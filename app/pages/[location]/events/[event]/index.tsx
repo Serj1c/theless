@@ -2,7 +2,7 @@ import React from 'react';
 import { ParsedUrlQuery } from 'querystring';
 import { GetServerSideProps, NextPage } from 'next';
 import Error from 'next/error';
-import EventPage from 'components/pages/EventPage/EventPage';
+import { EventPage } from 'components/pages';
 import { EventModel } from 'models/EventModel';
 import jsonrpc from 'utils/jsonrpc';
 

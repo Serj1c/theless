@@ -12,7 +12,7 @@ const PageHeader = ({ title }: Props): JSX.Element => (
     {/* Render page meta */}
     <Head>
       <title>
-        {TITLE_PREFIX} – {title}
+        {TITLE_PREFIX} {title}
       </title>
     </Head>
 
